@@ -1,5 +1,4 @@
 import React from 'react';
-import '../Styles/Hour.css';
 
 export default class Hour extends React.Component{
     constructor(){

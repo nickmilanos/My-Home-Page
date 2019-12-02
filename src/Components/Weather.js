@@ -4,12 +4,17 @@ export default class Weather extends React.Component{
     constructor(){
         super();
         this.state = {
+            description: "",
             lon: "",
             lat: "",
             cityName: '',
             country: "",
             temp: "",
-            humidity: ""
+            humidity: "",
+            cloud: "",
+            windSpeed: "",
+            sunrise: "",
+            sunset: ""
         };
         this.success = this.success.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
@@ -27,12 +32,19 @@ export default class Weather extends React.Component{
         navigator.geolocation.getCurrentPosition(this.success);
         fetch(`http://api.openweathermap.org/data/2.5/weather?id=256429&units=metric&appid=9b00c332e03384ca3992818f17135f63`)
             .then(res => res.json())
-            .then(res => {console.log(res)
+            .then(res => {
+                let readableSunset = new Date(res.sys.sunset * 1000).toUTCString();
+                let readableSunrise = new Date(res.sys.sunrise * 1000).toUTCString();
                 this.setState({
                     cityName: res.name,
                     country: res.sys.country,
                     temp: res.main.temp,
-                    humidity: res.main.humidity
+                    humidity: res.main.humidity,
+                    cloud: res.clouds.all,
+                    windSpeed: res.wind.speed,
+                    description: res.weather[0].description,
+                    sunrise: readableSunrise,
+                    sunset: readableSunset
                 });
             });
     }
@@ -40,12 +52,17 @@ export default class Weather extends React.Component{
 
     render(){
         return(
-            <div id="watherContainer">
-                <h2>Longitude: {this.state.lon}</h2>
-                <h2>Latitude: {this.state.lat}</h2>
-                <h2>{this.state.cityName}, {this.state.country}</h2>
-                <h2>Temperature {this.state.temp} °C</h2>
-                <h2>Humidity: {this.state.humidity}%</h2>
+            <div id="weatherContainer">
+                <h3>{this.state.description}</h3>
+                <span>Longitude: {this.state.lon}</span> <br />
+                <span>Latitude: {this.state.lat}</span> <br />
+                <span>{this.state.cityName}, {this.state.country}</span> <br />
+                <span>Temperature: {this.state.temp} °C</span> <br />
+                <span>Humidity: {this.state.humidity}%</span> <br />
+                <span>Cloud Cover: {this.state.cloud}%</span> <br />
+                <span>Wind Speed: {this.state.windSpeed} m/sec</span> <br />
+                <span>Sunrise: {this.state.sunrise}</span> <br />
+                <span>Sunset: {this.state.sunset}</span> <br />
             </div>
         );
     }

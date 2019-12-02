@@ -1,4 +1,6 @@
 import React from 'react';
+import {IoIosWater} from 'react-icons/io';
+import {WiThermometer, WiCloud, WiCloudyWindy} from 'react-icons/wi';
 
 export default class Weather extends React.Component{
     constructor(){
@@ -53,16 +55,10 @@ export default class Weather extends React.Component{
     render(){
         return(
             <div id="weatherContainer">
-                <h3>{this.state.description}</h3>
-                <span>Longitude: {this.state.lon}</span> <br />
-                <span>Latitude: {this.state.lat}</span> <br />
-                <span>{this.state.cityName}, {this.state.country}</span> <br />
-                <span>Temperature: {this.state.temp} °C</span> <br />
-                <span>Humidity: {this.state.humidity}%</span> <br />
-                <span>Cloud Cover: {this.state.cloud}%</span> <br />
-                <span>Wind Speed: {this.state.windSpeed} m/sec</span> <br />
-                <span>Sunrise: {this.state.sunrise}</span> <br />
-                <span>Sunset: {this.state.sunset}</span> <br />
+                <span><WiThermometer />{this.state.temp} °C</span> 
+                <span><IoIosWater />{this.state.humidity}%</span> <br />
+                <span><WiCloud />{this.state.cloud}%</span> <br />
+                <span><WiCloudyWindy />{this.state.windSpeed} m/sec</span> <br />
             </div>
         );
     }

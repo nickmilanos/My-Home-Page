@@ -6,10 +6,19 @@
 }
 
 #weatherContainer{
-    font-size:10px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+    font-size:19px;
+}
+
+#weatherContainer span{
+    width:120px;
 }
 
 #hourContainer{
+    font-size: 24px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

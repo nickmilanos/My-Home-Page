@@ -1,0 +1,65 @@
+@mixin flexLayout($justify_content){
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: $justify_content;
+}
+
+#appContainer{
+    height:100%;
+    width:100%;
+    margin:0;
+    color: rgba(245, 243, 233, 0.7);
+    #weatherContainer{
+        @include flexLayout(center);
+        width:100%;
+        font-size:19px;
+        span{
+            margin:0 9px 0 9px;
+        }
+    }
+    #hourContainer{
+        @include flexLayout(center);
+        font-size: 24px;
+    }
+    h1, h2{
+        width:100%;
+        text-align:center;
+    }
+
+    h1{
+        margin-bottom:4px;
+    }
+    h2{
+        margin-top:0;
+    }
+    #todoContainer{
+        @include flexLayout(flex-end);
+        width:100%;
+        position:absolute;
+        bottom:0;
+        #todoList{
+            width:500px;
+            height:400px;
+            border-top-right-radius:4%;
+            border-top-left-radius:4%;
+            #header{
+                font-size:29px;
+                text-align:center;
+                color:#6D929B;
+                background:#B7AFA3;
+                border-bottom:1px solid #6D929B;
+                h4{
+                    margin:0;
+                }
+            }
+            #todoMainBody{
+                background:white;
+            }
+        }
+    }
+}
+
+
+
+
+

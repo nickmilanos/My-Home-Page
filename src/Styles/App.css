@@ -23,27 +23,18 @@
     margin-bottom: 4px; }
   #appContainer h2 {
     margin-top: 0; }
-  #appContainer #todoContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    width: 100%;
-    position: absolute;
-    bottom: 0; }
-    #appContainer #todoContainer #todoList {
-      width: 500px;
-      height: 400px;
-      border-top-right-radius: 4%;
-      border-top-left-radius: 4%; }
-      #appContainer #todoContainer #todoList #header {
-        font-size: 29px;
-        text-align: center;
-        color: #6D929B;
-        background: #B7AFA3;
-        border-bottom: 1px solid #6D929B; }
-        #appContainer #todoContainer #todoList #header h4 {
-          margin: 0; }
-      #appContainer #todoContainer #todoList #todoMainBody {
-        background: white; }
+  #appContainer #googleSearchContainer {
+    text-align: center;
+    margin-top: 200px; }
+    #appContainer #googleSearchContainer #search {
+      outline: none;
+      font-size: 22px;
+      height: 38px;
+      width: 537px;
+      border-radius: 25px;
+      padding-left: 20px;
+      transition: 1s; }
+      #appContainer #googleSearchContainer #search:focus {
+        transform: scale(1.4, 1.4); }
 
 /*# sourceMappingURL=App.css.map */

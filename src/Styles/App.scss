@@ -3,7 +3,7 @@
     flex-wrap:wrap;
     justify-content: $justify_content;
 }
-$mainBoxShadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+$mainBoxShadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
 
 
 #appContainer{
@@ -70,10 +70,30 @@ $mainBoxShadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
             }
         }
     }
+    #loadingContainer{
+        @keyframes rotate{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        animation-name: rotate;
+        animation-iteration-count: infinite;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        width:20px;
+        font-size: 110px;
+    }
     #settingsContainer{
-        @include flexLayout(flex-end);
         font-size: 30px;
-        margin: 390px 0 0 0;
+        position: absolute;
+        top: 90%;
+        left: 95%;
         span{
             margin: 0 40px 0 0;
             &:hover{

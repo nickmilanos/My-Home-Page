@@ -34,7 +34,7 @@
       font-size: 22px;
       height: 38px;
       width: 537px;
-      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+      box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
       border-radius: 25px;
       padding-left: 20px;
       transition: 0.3s; }
@@ -51,16 +51,30 @@
       padding-left: 10px;
       padding-right: 10px;
       padding-top: 7px;
-      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8); }
+      box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7); }
       #appContainer #todoListContainer span:hover {
         color: rgba(8, 120, 31, 0.8);
         border-color: rgba(8, 120, 31, 0.8); }
+  #appContainer #loadingContainer {
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20px;
+    font-size: 110px; }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
   #appContainer #settingsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
     font-size: 30px;
-    margin: 390px 0 0 0; }
+    position: absolute;
+    top: 90%;
+    left: 95%; }
     #appContainer #settingsContainer span {
       margin: 0 40px 0 0; }
       #appContainer #settingsContainer span:hover {

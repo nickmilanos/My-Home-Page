@@ -4,12 +4,14 @@ import Hour from './Hour.js';
 import Weather from './Weather.js';
 import Settings from './Settings.js';
 import GoogleSearch from './GoogleSearch.js';
+import Loading from './Loading.js';
 import TodoList from './TodoList.js';
 
 export default class App extends React.Component {
     constructor(){
         super();
         this.myRoot = document.querySelector("#root");
+        this.imgObj = new Image();
     }
     getRandomWallpaperFromUnsplash = () => {
         const accessKey = "973a2dc62497213188e486e906dc5128f123552910555beecdf9894d63b29bb0";
@@ -39,7 +41,7 @@ export default class App extends React.Component {
             milkyway: "1538150",
             fogMist: "1463948"
         };
-        let randomPage = Math.floor(Math.random() * 4) + 1;
+        let randomPage = Math.floor(Math.random() * 3) + 1;
         let favoriteCollectionsValues = Object.values(favoriteCollections);
         let randomCollectionId = favoriteCollectionsValues[Math.floor(Math.random() * favoriteCollectionsValues.length)];
         for(let key of Object.keys(favoriteCollections)){
@@ -52,8 +54,17 @@ export default class App extends React.Component {
             .then(res => res.json())
             .then(data => {
                 let randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
+                let isLoaded = false;
+                this.imgObj.src = randomImage;
+                this.imgObj.addEventListener("load", _ => {
+                    isLoaded = !isLoaded;
+                    if(isLoaded){
+                        console.log("Loaded!");
+                        document.querySelector("#loadingContainer").style.display = "none";
+                        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
+                    }                 
+                });
                 console.log(`Page: ${randomPage}`);
-                this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
             });
     }
 
@@ -65,6 +76,7 @@ export default class App extends React.Component {
             <Weather />
             <GoogleSearch />
             <TodoList />
+            <Loading />
             <Settings />
         </div>
         );

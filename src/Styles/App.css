@@ -20,7 +20,7 @@
     width: 100%;
     text-align: center; }
   #appContainer h1 {
-    margin-bottom: 4px; }
+    margin-bottom: 9px; }
   #appContainer h2 {
     margin-top: 0; }
   #appContainer #googleSearchContainer {
@@ -34,11 +34,40 @@
       font-size: 22px;
       height: 38px;
       width: 537px;
-      box-shadow: 4px 4px 10px 2px;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
       border-radius: 25px;
       padding-left: 20px;
       transition: 0.3s; }
       #appContainer #googleSearchContainer #search:focus {
-        transform: scale(1.1, 1.1); }
+        transform: scale(1.06); }
+  #appContainer #todoListContainer {
+    font-size: 30px; }
+    #appContainer #todoListContainer span {
+      border-right: 2px solid rgba(245, 243, 233, 0.8);
+      border-top: 2px solid rgba(245, 243, 233, 0.8);
+      border-bottom: 2px solid rgba(245, 243, 233, 0.8);
+      border-bottom-right-radius: 40%;
+      border-top-right-radius: 40%;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 7px;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8); }
+      #appContainer #todoListContainer span:hover {
+        color: rgba(8, 120, 31, 0.8);
+        border-color: rgba(8, 120, 31, 0.8); }
+  #appContainer #settingsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 30px;
+    margin: 390px 0 0 0; }
+    #appContainer #settingsContainer span {
+      margin: 0 40px 0 0; }
+      #appContainer #settingsContainer span:hover {
+        color: white; }
+  #appContainer .blured {
+    filter: blur(2px); }
+  #appContainer .unblured {
+    filter: blur(0); }
 
 /*# sourceMappingURL=App.css.map */

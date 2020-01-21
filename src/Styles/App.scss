@@ -3,6 +3,8 @@
     flex-wrap:wrap;
     justify-content: $justify_content;
 }
+$mainBoxShadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+
 
 #appContainer{
     height:100%;
@@ -27,7 +29,7 @@
     }
 
     h1{
-        margin-bottom:4px;
+        margin-bottom:9px;
     }
     h2{
         margin-top:0;
@@ -41,14 +43,49 @@
             font-size: 22px;
             height:38px;
             width:537px;
-            box-shadow: 4px 4px 10px 2px;
+            box-shadow: $mainBoxShadow;
             border-radius: 25px;
             padding-left: 20px;
             transition: 0.3s;
             &:focus{
-                transform:scale(1.1, 1.1);
+                transform:scale(1.06);
             }
         }
+    }
+    #todoListContainer{
+        font-size: 30px;
+        span{
+            border-right: 2px solid rgba(245, 243, 233, 0.8);
+            border-top: 2px solid rgba(245, 243, 233, 0.8);
+            border-bottom: 2px solid rgba(245, 243, 233, 0.8);
+            border-bottom-right-radius: 40%;
+            border-top-right-radius: 40%;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 7px;
+            box-shadow: $mainBoxShadow;
+                &:hover{
+                color: rgba(8, 120, 31, 0.8);
+                border-color: rgba(8, 120, 31, 0.8);
+            }
+        }
+    }
+    #settingsContainer{
+        @include flexLayout(flex-end);
+        font-size: 30px;
+        margin: 390px 0 0 0;
+        span{
+            margin: 0 40px 0 0;
+            &:hover{
+                color: white;
+            }
+        }
+    }
+    .blured{
+        filter: blur(2px);
+    }
+    .unblured{
+        filter: blur(0);
     }
 }
 

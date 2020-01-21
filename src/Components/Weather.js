@@ -58,7 +58,7 @@ export default class Weather extends React.Component{
                 <span><WiThermometer />{this.state.temp} °C</span> 
                 <span><IoIosWater />{this.state.humidity}%</span> <br />
                 <span><WiCloud />{this.state.cloud}%</span> <br />
-                <span><WiCloudyWindy />{this.state.windSpeed * 3.6} km/h</span> <br />
+                <span><WiCloudyWindy />{this.state.windSpeed * 3.6.toFixed(1)}km/h</span> <br />
             </div>
         );
     }

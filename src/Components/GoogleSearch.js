@@ -5,7 +5,7 @@ export default class GoogleSearch extends React.Component{
         return(
             <div id="googleSearchContainer">
                 <form method="get" action="https://www.google.com/search">
-                    <input type="text" name="q" id="search" autoComplete="off" placeholder="Google Search" />
+                    <input type="text" name="q" id="search" autoComplete="off" placeholder="Google Search" autoFocus />
                 </form>
             </div>
         );

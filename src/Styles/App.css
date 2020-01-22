@@ -12,17 +12,13 @@
     #appContainer #weatherContainer span {
       margin: 0 9px 0 9px; }
   #appContainer #hourContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     font-size: 24px; }
-  #appContainer h1, #appContainer h2 {
-    width: 100%;
-    text-align: center; }
-  #appContainer h1 {
-    margin-bottom: 9px; }
-  #appContainer h2 {
-    margin-top: 0; }
+    #appContainer #hourContainer h1, #appContainer #hourContainer h2 {
+      width: 100%;
+      text-align: center;
+      margin-top: 0; }
+    #appContainer #hourContainer h1 {
+      margin-bottom: 9px; }
   #appContainer #googleSearchContainer {
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +37,10 @@
       #appContainer #googleSearchContainer #search:focus {
         transform: scale(1.06); }
   #appContainer #todoListContainer {
-    font-size: 30px; }
+    font-size: 30px;
+    width: 350px;
+    position: absolute;
+    top: 20px; }
     #appContainer #todoListContainer span {
       border-right: 2px solid rgba(245, 243, 233, 0.8);
       border-top: 2px solid rgba(245, 243, 233, 0.8);
@@ -55,6 +54,25 @@
       #appContainer #todoListContainer span:hover {
         color: rgba(8, 120, 31, 0.8);
         border-color: rgba(8, 120, 31, 0.8); }
+    #appContainer #todoListContainer #list {
+      transition: all 0.6s;
+      width: 500px;
+      height: 870px;
+      background: white;
+      color: black;
+      border-right: 2px solid black;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      border-bottom-right-radius: 4%;
+      border-top-right-radius: 4%;
+      box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7); }
+      #appContainer #todoListContainer #list h5 {
+        text-align: right;
+        margin-right: 10px;
+        margin-top: 0; }
+      #appContainer #todoListContainer #list #input {
+        width: 99%;
+        font-size: 26px; }
   #appContainer #loadingContainer {
     animation-name: rotate;
     animation-iteration-count: infinite;
@@ -83,5 +101,7 @@
     filter: blur(2px); }
   #appContainer .unblured {
     filter: blur(0); }
+  #appContainer .zeroWidth {
+    width: 0px !important; }
 
 /*# sourceMappingURL=App.css.map */

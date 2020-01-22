@@ -4,7 +4,9 @@ export default class Hour extends React.Component{
     constructor(){
         super();
         this.state={
-            seconds: ""
+            seconds: "",
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         };
         this.handleSeconds = this.handleSeconds.bind(this);
     }
@@ -32,11 +34,9 @@ export default class Hour extends React.Component{
     }
 
     render(){
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const date = new Date();
-        const currentMonth = months[date.getMonth()];
-        const currentDay = days[date.getDay()];
+        let currentMonth = this.state.months[date.getMonth()];
+        let currentDay = this.state.days[date.getDay()];
         let currentHour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()
         let currentMinute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
         return(

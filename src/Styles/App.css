@@ -7,24 +7,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
+    width: 300px;
+    margin-left: 84.3%;
     font-size: 19px; }
     #appContainer #weatherContainer span {
       margin: 0 9px 0 9px; }
   #appContainer #hourContainer {
     font-size: 24px; }
     #appContainer #hourContainer h1, #appContainer #hourContainer h2 {
-      width: 100%;
-      text-align: center;
-      margin-top: 0; }
-    #appContainer #hourContainer h1 {
-      margin-bottom: 9px; }
+      width: 30%;
+      margin-left: 69%;
+      margin-top: 0;
+      text-align: right; }
+    #appContainer #hourContainer h1, #appContainer #hourContainer h2 {
+      margin-bottom: 5px; }
   #appContainer #googleSearchContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    margin-top: 200px; }
+    text-align: center; }
     #appContainer #googleSearchContainer #search {
       outline: none;
       font-size: 22px;
@@ -52,13 +50,13 @@
       padding-top: 7px;
       box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7); }
       #appContainer #todoListContainer span:hover {
-        color: rgba(8, 120, 31, 0.8);
+        color: rgba(245, 243, 233, 0.5);
         border-color: rgba(8, 120, 31, 0.8); }
     #appContainer #todoListContainer #list {
       transition: all 0.6s;
-      width: 500px;
-      height: 870px;
-      background: white;
+      width: 0px;
+      height: 850px;
+      background: rgba(255, 255, 255, 0.6);
       color: black;
       border-right: 2px solid black;
       border-top: 2px solid black;
@@ -66,13 +64,18 @@
       border-bottom-right-radius: 4%;
       border-top-right-radius: 4%;
       box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7); }
+      #appContainer #todoListContainer #list ul {
+        list-style-type: none;
+        padding-left: 0; }
+      #appContainer #todoListContainer #list li:nth-child(even) {
+        background: rgba(245, 243, 233, 0.5); }
       #appContainer #todoListContainer #list h5 {
         text-align: right;
-        margin-right: 10px;
-        margin-top: 0; }
+        margin: 0 10px 5px 0; }
       #appContainer #todoListContainer #list #input {
         width: 99%;
-        font-size: 26px; }
+        font-size: 26px;
+        outline: none; }
   #appContainer #loadingContainer {
     animation-name: rotate;
     animation-iteration-count: infinite;
@@ -102,6 +105,6 @@
   #appContainer .unblured {
     filter: blur(0); }
   #appContainer .zeroWidth {
-    width: 0px !important; }
+    width: 460px !important; }
 
 /*# sourceMappingURL=App.css.map */

@@ -55,10 +55,10 @@ export default class Weather extends React.Component{
     render(){
         return(
             <div id="weatherContainer">
-                <span><WiThermometer />{this.state.temp} °C</span> 
+                <span><WiThermometer />{Math.round(this.state.temp)} °C</span> 
                 <span><IoIosWater />{this.state.humidity}%</span> <br />
                 <span><WiCloud />{this.state.cloud}%</span> <br />
-                <span><WiCloudyWindy />{this.state.windSpeed * 3.6.toFixed(1)}km/h</span> <br />
+                <span><WiCloudyWindy />{Math.round(this.state.windSpeed * 3.6)}km/h</span> <br />
             </div>
         );
     }

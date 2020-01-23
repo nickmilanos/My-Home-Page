@@ -4,13 +4,17 @@ import {GoChecklist} from 'react-icons/go';
 export default class TodoList extends React.Component{
     onClickHandler(){
         document.querySelector("#list").classList.toggle("zeroWidth");
+
     }
-    onKeyPressHandler(e){
-        if(e.key === "Enter" && document.querySelector("input").value !== ""){
-            let newListItem = document.createElement("li");
-            newListItem.textContent = document.querySelector("input").value;
-            document.querySelector("ul").append(newListItem);
-        }
+    onKeyPressHandler(event){
+        let myInput = document.querySelector("#input");
+        let myList = document.querySelector("ul");
+        if(event.key === "Enter" && myInput.value !== ""){
+            let newItem = document.createElement("li");
+            newItem.textContent = myInput.value;
+            myList.append(newItem);
+            myInput.value = "";
+        }     
     }
     render(){
         return(
@@ -20,7 +24,6 @@ export default class TodoList extends React.Component{
                     <h5>TODO</h5>
                     <input type="text" placeholder="New Task" id="input" onKeyPress={this.onKeyPressHandler}></input>
                     <ul>
-                        <li>qwqw</li>
                     </ul>
                 </div>
             </div>

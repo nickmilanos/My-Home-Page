@@ -59,7 +59,7 @@ $todoListHeaderHeight: 40px;
         width:350px;
         position:absolute;
         top: 20px;
-        span{
+        #item{
             border-right: 2px solid rgba(245, 243, 233, 0.8);
             border-top: 2px solid rgba(245, 243, 233, 0.8);
             border-bottom: 2px solid rgba(245, 243, 233, 0.8);
@@ -70,15 +70,16 @@ $todoListHeaderHeight: 40px;
             padding-top: 7px;
             box-shadow: $mainBoxShadow;
                 &:hover{
-                color: rgba(245, 243, 233, 0.5);
+                color: rgba(8, 120, 31, 0.8);
                 border-color: rgba(8, 120, 31, 0.8);
             }
         }
         #list{
+            font-family: 'Ubuntu', sans-serif;
             transition: all 0.6s;
             width: 0px;
             height: $todoListHeight;
-            background: rgba(255, 255, 255, 0.6);
+            background: #BEB9B5;
             color: black;
             border-right: 2px solid black;
             border-top: 2px solid black;
@@ -90,15 +91,23 @@ $todoListHeaderHeight: 40px;
                 overflow-y: auto;
                 height: $todoListHeight - $todoInputHeight - $todoListHeaderHeight - 40px;
                 ul{
-                    list-style-type: none;
                     align-self: auto;
                     padding-left: 0;
                     margin: 0;
                     display: none;
+                    .dateTime{
+                        float: right;
+                        margin-right: 40px;
+                        margin-top: 9px;
+                        font-size: 18px;
+                    }
                 }
                 li:nth-child(odd){
-                    background:rgba(245, 243, 233, 0.5);
+                    background: rgb(241, 233, 221);
                 }
+            }
+            #ulWrapper::-webkit-scrollbar{
+                display: none;
             }
             h5{
                 text-align: center;
@@ -108,7 +117,7 @@ $todoListHeaderHeight: 40px;
                 transition: all 0.6s;
             }
             #input{
-                width: 99%;
+                width: 99.2%;
                 height: $todoInputHeight;
                 font-size: 26px;
                 outline: none;
@@ -139,14 +148,21 @@ $todoListHeaderHeight: 40px;
     #settingsContainer{
         font-size: 30px;
         position: absolute;
-        top: 90%;
-        left: 95%;
+        top: 92%;
+        left: 96%;
         span{
             margin: 0 40px 0 0;
             &:hover{
                 color: white;
             }
         }
+    }
+    #quoteContainer{
+        margin-top: 650px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.2em;
     }
     .blured{
         filter: blur(2px);
@@ -155,7 +171,7 @@ $todoListHeaderHeight: 40px;
         filter: blur(0);
     }
     .fullWidth{
-        width: 460px !important;
+        width: 560px !important;
     }
     .displayHeader{
         display: block !important;
@@ -165,6 +181,11 @@ $todoListHeaderHeight: 40px;
     }
     .displayList{
         display: block !important;
+    }
+    .green{
+        color: rgba(12, 141, 12, 1);
+        text-decoration: line-through;
+        font-weight: bold;
     }
 }
 

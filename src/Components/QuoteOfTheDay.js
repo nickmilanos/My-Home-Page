@@ -27,5 +27,4 @@ export default class QuoteOfTheDay extends React.Component{
             </div>
         );
     }
-
 }

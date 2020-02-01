@@ -55,9 +55,10 @@
         color: rgba(8, 120, 31, 0.8);
         border-color: rgba(8, 120, 31, 0.8); }
     #appContainer #todoListContainer #list {
-      font-family: 'Ubuntu', sans-serif;
-      transition: all 0.6s;
+      /*Modify only transform and opacity to make the animation smooth af*/
+      transition: all 0.4s;
       width: 0px;
+      opacity: 0;
       height: 850px;
       background: #BEB9B5;
       color: black;
@@ -69,34 +70,36 @@
       box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7); }
       #appContainer #todoListContainer #list #ulWrapper {
         overflow-y: auto;
-        height: 730px; }
+        height: 711px; }
         #appContainer #todoListContainer #list #ulWrapper ul {
           align-self: auto;
           padding-left: 0;
-          margin: 0;
-          display: none; }
+          margin: 0; }
           #appContainer #todoListContainer #list #ulWrapper ul .dateTime {
             float: right;
             margin-right: 40px;
             margin-top: 9px;
-            font-size: 18px; }
+            font-size: 18px;
+            color: rgba(0, 0, 0, 0.4); }
         #appContainer #todoListContainer #list #ulWrapper li:nth-child(odd) {
           background: #f1e9dd; }
       #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar {
         display: none; }
       #appContainer #todoListContainer #list h5 {
         text-align: center;
-        margin: 0 10px 5px 0;
-        height: 40px;
-        display: none;
-        transition: all 0.6s; }
+        height: 31px;
+        font-size: 31px;
+        transition: all 0.6s;
+        font-family: 'Marck Script', cursive;
+        margin-top: 16px;
+        margin-bottom: 16px; }
       #appContainer #todoListContainer #list #input {
         width: 99.2%;
         height: 40px;
         font-size: 26px;
         outline: none;
-        display: none;
-        transition: all 0.6s; }
+        transition: all 0.6s;
+        font-family: 'Open Sans Condensed', sans-serif; }
   #appContainer #loadingContainer {
     animation: rotate 2s linear;
     animation-iteration-count: infinite;
@@ -131,16 +134,10 @@
   #appContainer .unblured {
     filter: blur(0); }
   #appContainer .fullWidth {
-    width: 560px !important; }
-  #appContainer .displayHeader {
-    display: block !important; }
-  #appContainer .displayInputText {
-    display: inline-block !important; }
-  #appContainer .displayList {
-    display: block !important; }
+    width: 560px !important;
+    opacity: 1 !important; }
   #appContainer .green {
     color: #0c8d0c;
-    text-decoration: line-through;
-    font-weight: bold; }
+    text-decoration: line-through; }
 
 /*# sourceMappingURL=App.css.map */

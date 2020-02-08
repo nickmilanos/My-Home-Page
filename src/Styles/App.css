@@ -38,7 +38,7 @@
         transform: scale(1.06); }
   #appContainer #todoListContainer {
     font-size: 30px;
-    width: 350px;
+    width: 550px;
     position: absolute;
     top: 20px; }
     #appContainer #todoListContainer #item {
@@ -57,9 +57,10 @@
     #appContainer #todoListContainer #list {
       /*Modify only transform and opacity to make the animation smooth af*/
       transition: all 0.4s;
-      width: 0px;
       opacity: 0;
       height: 850px;
+      width: 550px;
+      transform: translateX(-550px);
       background: #BEB9B5;
       color: black;
       border-right: 2px solid black;
@@ -74,15 +75,30 @@
         #appContainer #todoListContainer #list #ulWrapper ul {
           align-self: auto;
           padding-left: 0;
-          margin: 0; }
+          margin: 0;
+          list-style-type: none; }
+          #appContainer #todoListContainer #list #ulWrapper ul li {
+            padding-left: 5px; }
+          #appContainer #todoListContainer #list #ulWrapper ul li:nth-child(odd) {
+            background: #f1e9dd; }
           #appContainer #todoListContainer #list #ulWrapper ul .dateTime {
             float: right;
-            margin-right: 40px;
-            margin-top: 9px;
+            margin-top: 6px;
             font-size: 18px;
-            color: rgba(0, 0, 0, 0.4); }
-        #appContainer #todoListContainer #list #ulWrapper li:nth-child(odd) {
-          background: #f1e9dd; }
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            left: 400px; }
+          #appContainer #todoListContainer #list #ulWrapper ul .fas.fa-check-circle {
+            float: right;
+            font-size: 30px;
+            color: green;
+            display: none;
+            margin-right: 20px; }
+          #appContainer #todoListContainer #list #ulWrapper ul .fas.fa-trash {
+            transition: opacity 1s;
+            margin-right: 5px;
+            color: red;
+            opacity: 0; }
       #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar {
         display: none; }
       #appContainer #todoListContainer #list h5 {
@@ -129,15 +145,24 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 1.2em; }
-  #appContainer .blured {
-    filter: blur(2px); }
-  #appContainer .unblured {
-    filter: blur(0); }
   #appContainer .fullWidth {
-    width: 560px !important;
-    opacity: 1 !important; }
+    opacity: 1 !important;
+    transform: translateX(0) !important; }
   #appContainer .green {
     color: #0c8d0c;
     text-decoration: line-through; }
+  #appContainer .fadeIn {
+    animation: changeOpacity 1s; }
+@keyframes changeOpacity {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+  #appContainer .displayInlineBlock {
+    display: inline-block !important; }
+  #appContainer .fullOpacity {
+    opacity: 1 !important; }
+  #appContainer .zeroOpacity {
+    opacity: 0 !important; }
 
 /*# sourceMappingURL=App.css.map */

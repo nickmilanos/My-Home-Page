@@ -17,12 +17,21 @@ export default class TodoList extends React.Component{
             let dateTime = document.createElement('span');
             dateTime.textContent = `${date.getDate}`;
             let newItem = document.createElement('li');
-            newItem.innerHTML = `${myInput.value}   <span class='dateTime'>${date.getDate()}.${currentMonth + 1}.${date.getFullYear()} ${currentHour}:${currentMinute}</span>`;
+            newItem.classList.add('fadeIn');
+            newItem.innerHTML = `<i class="fas fa-trash"></i>${myInput.value}<span><i class="fas fa-check-circle"></i></span><span class='dateTime'>${date.getDate()}.${currentMonth + 1}.${date.getFullYear()} ${currentHour}:${currentMinute}</span>`;
             myList.append(newItem);
             myInput.value = "";
-            newItem.addEventListener('click', () => {
+            newItem.addEventListener('click', (event) => {
+                event.target.querySelector('.fas.fa-check-circle').classList.toggle('displayInlineBlock');
                 newItem.classList.toggle('green');
             });
+            newItem.addEventListener('mouseenter', (event) => {
+                event.target.querySelector('.fas.fa-trash').classList.toggle('fullOpacity');
+            });
+            newItem.addEventListener('mouseleave', (event) => {
+                event.target.querySelector('.fas.fa-trash').classList.toggle('fullOpacity');
+            });
+            
         }     
     }
     render(){

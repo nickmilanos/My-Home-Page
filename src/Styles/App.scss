@@ -7,6 +7,7 @@ $mainBoxShadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
 $todoInputHeight: 40px;
 $todoListHeight: 850px;
 $todoListHeaderHeight: 31px;
+$todoListContainerWidth: 550px;
 
 
 #appContainer{
@@ -56,7 +57,7 @@ $todoListHeaderHeight: 31px;
     }
     #todoListContainer{
         font-size: 30px;
-        width:350px;
+        width:$todoListContainerWidth;
         position:absolute;
         top: 20px;
         #item{
@@ -77,9 +78,10 @@ $todoListHeaderHeight: 31px;
         #list{
             /*Modify only transform and opacity to make the animation smooth af*/
             transition: all 0.4s;
-            width: 0px;
             opacity: 0;
             height: $todoListHeight;
+            width: $todoListContainerWidth;
+            transform: translateX(-550px);
             background: #BEB9B5;
             color: black;
             border-right: 2px solid black;
@@ -95,16 +97,34 @@ $todoListHeaderHeight: 31px;
                     align-self: auto;
                     padding-left: 0;
                     margin: 0;
+                    list-style-type: none;
+                    li{
+                        padding-left: 5px;
+                    }
+                    li:nth-child(odd){
+                        background: rgb(241, 233, 221);
+                    }
                     .dateTime{
                         float: right;
-                        margin-right: 40px;
-                        margin-top: 9px;
+                        margin-top: 6px;
                         font-size: 18px;
                         color: rgba(0,0,0,0.4);
+                        position: absolute;
+                        left: 400px;
                     }
-                }
-                li:nth-child(odd){
-                    background: rgb(241, 233, 221);
+                    .fas.fa-check-circle{
+                        float: right;
+                        font-size: 30px;
+                        color: green;
+                        display: none;
+                        margin-right: 20px;
+                    }
+                    .fas.fa-trash{
+                        transition: opacity 1s;
+                        margin-right: 5px;
+                        color: red;
+                        opacity: 0;
+                    }
                 }
             }
             #ulWrapper::-webkit-scrollbar{
@@ -166,19 +186,33 @@ $todoListHeaderHeight: 31px;
         margin-right: auto;
         font-size: 1.2em;
     }
-    .blured{
-        filter: blur(2px);
-    }
-    .unblured{
-        filter: blur(0);
-    }
     .fullWidth{
-        width: 560px !important;
         opacity: 1 !important;
+        transform: translateX(0) !important;
     }
     .green{
         color: rgba(12, 141, 12, 1);
         text-decoration: line-through;
+    }
+    .fadeIn{
+        @keyframes changeOpacity{
+            from{ 
+                opacity: 0;
+            }
+            to{ 
+                opacity:1;
+            }
+        }
+        animation: changeOpacity 1s;
+    }
+    .displayInlineBlock{
+        display: inline-block !important;
+    }
+    .fullOpacity{
+        opacity: 1 !important;
+    }
+    .zeroOpacity{
+        opacity: 0 !important;
     }
 }
 

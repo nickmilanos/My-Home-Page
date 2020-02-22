@@ -42,7 +42,11 @@ export default class App extends React.Component {
             fogMist: "1463948",
             cloudsColor: "1052683",
             moodyLandscapes: "1457745",
-            space: "1111575"
+            space: "1111575",
+            unsplashEditorial: '317099',
+            desktopWallpapers: '987395',
+            storms: '1089430',
+            coolWallpapers: '1111678'
         };
         let randomPage = Math.floor(Math.random() * 20) + 1;
         let favoriteCollectionsValues = Object.values(favoriteCollections);

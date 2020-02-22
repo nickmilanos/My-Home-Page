@@ -1,11 +1,10 @@
 import React from 'react';
-import {AiOutlineReload} from 'react-icons/ai';
 
 export default class Loading extends React.Component{
     render(){
         return(
             <div id="loadingContainer">
-                <span><AiOutlineReload /></span>
+                <span><i className="fas fa-yin-yang fa-spin"></i></span>
             </div>
         );
     }

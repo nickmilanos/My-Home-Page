@@ -6,7 +6,6 @@ export default class Weather extends React.Component{
     constructor(){
         super();
         this.state = {
-            description: "",
             lon: "",
             lat: "",
             cityName: '',
@@ -18,25 +17,27 @@ export default class Weather extends React.Component{
             sunrise: "",
             sunset: ""
         };
-        this.success = this.success.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
-    }
-    
-    success(position){
-        const coordinates = position.coords;
-        this.setState({
-            lon: coordinates.longitude,
-            lat: coordinates.latitude
-        });
     }
 
     componentDidMount(){
-        navigator.geolocation.getCurrentPosition(this.success);
+        navigator.geolocation.getCurrentPosition(position => {
+            const coordinates = position.coords;
+            this.setState({
+                lon: coordinates.longitude,
+                lat: coordinates.latitude
+            });
+        });
         fetch(`http://api.openweathermap.org/data/2.5/weather?id=256429&units=metric&appid=9b00c332e03384ca3992818f17135f63`)
             .then(res => res.json())
             .then(res => {
-                let readableSunset = new Date(res.sys.sunset * 1000).toUTCString();
-                let readableSunrise = new Date(res.sys.sunrise * 1000).toUTCString();
+                let readableSunset = new Date(res.sys.sunset * 1000);
+                let readableSunrise = new Date(res.sys.sunrise * 1000);
+                let sunsetHour = readableSunset.getHours() < 10 ? `0${readableSunset.getHours()}` : readableSunset.getHours()
+                let sunsetMinute = readableSunset.getMinutes() < 10 ? `0${readableSunset.getMinutes()}` : readableSunset.getMinutes();
+                let sunriseHour = readableSunrise.getHours() < 10 ? `0${readableSunrise.getHours()}` : readableSunrise.getHours()
+                let sunriseMinute = readableSunrise.getMinutes() < 10 ? `0${readableSunrise.getMinutes()}` : readableSunrise.getMinutes();
+
                 this.setState({
                     cityName: res.name,
                     country: res.sys.country,
@@ -44,9 +45,8 @@ export default class Weather extends React.Component{
                     humidity: res.main.humidity,
                     cloud: res.clouds.all,
                     windSpeed: res.wind.speed,
-                    description: res.weather[0].description,
-                    sunrise: readableSunrise,
-                    sunset: readableSunset
+                    sunrise: `${sunriseHour}:${sunriseMinute}`,
+                    sunset: `${sunsetHour}:${sunsetMinute}`
                 });
             });
     }
@@ -59,6 +59,8 @@ export default class Weather extends React.Component{
                 <span><IoIosWater />{this.state.humidity}%</span> <br />
                 <span><WiCloud />{this.state.cloud}%</span> <br />
                 <span><WiCloudyWindy />{Math.round(this.state.windSpeed * 3.6)}km/h</span> <br />
+                <span><i className="fas fa-sun"></i> {this.state.sunrise}</span>
+                <span><i className="fas fa-moon"></i> {this.state.sunset}</span>
             </div>
         );
     }

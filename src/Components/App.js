@@ -67,17 +67,14 @@ export default class App extends React.Component {
                 else{
                     this.getRandomWallpaperFromCollectionOfUnsplash();
                 }
-                let isLoaded = false;
                 this.imgObj.src = randomImage;
                 this.imgObj.addEventListener("load", _ => {
-                    isLoaded = !isLoaded;
-                    if(isLoaded){
-                        document.querySelector("#loadingContainer").style.display = "none";
-                        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
-                    }                 
+                    document.querySelector("#loadingContainer").style.display = "none";
+                    this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
                 });
                 console.log(`Page: ${randomPage}`);
-            });
+            })
+            .catch(_ => console.log('Image limit reached..'));
     }
 
     componentDidMount(){

@@ -27,7 +27,7 @@
     text-align: center; }
     #appContainer #googleSearchContainer #search {
       outline: none;
-      font-size: 22px;
+      font-size: 15px;
       height: 38px;
       width: 537px;
       box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
@@ -42,12 +42,13 @@
     position: absolute;
     top: 20px; }
     #appContainer #todoListContainer #item {
+      font-size: 21px;
       border-right: 2px solid rgba(245, 243, 233, 0.8);
       border-top: 2px solid rgba(245, 243, 233, 0.8);
       border-bottom: 2px solid rgba(245, 243, 233, 0.8);
       border-bottom-right-radius: 40%;
       border-top-right-radius: 40%;
-      padding-left: 10px;
+      padding-left: 6px;
       padding-right: 10px;
       padding-top: 7px;
       box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7); }

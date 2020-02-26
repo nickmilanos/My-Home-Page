@@ -55,27 +55,27 @@ $todoListContainerWidth: 550px;
             }
         }
     }
+    .sideButtons{
+        font-size: 21px;
+        border-right: 2px solid rgba(245, 243, 233, 0.8);
+        border-top: 2px solid rgba(245, 243, 233, 0.8);
+        border-bottom: 2px solid rgba(245, 243, 233, 0.8);
+        border-bottom-right-radius: 40%;
+        border-top-right-radius: 40%;
+        padding-left: 6px;
+        padding-right: 10px;
+        padding-top: 7px;
+        box-shadow: $mainBoxShadow;
+            &:hover{
+            color: rgba(8, 120, 31, 0.8);
+            border-color: rgba(8, 120, 31, 0.8);
+        }
+    }
     #todoListContainer{
         font-size: 25px;
         width:$todoListContainerWidth;
         position:absolute;
         top: 20px;
-        #item{
-            font-size: 21px;
-            border-right: 2px solid rgba(245, 243, 233, 0.8);
-            border-top: 2px solid rgba(245, 243, 233, 0.8);
-            border-bottom: 2px solid rgba(245, 243, 233, 0.8);
-            border-bottom-right-radius: 40%;
-            border-top-right-radius: 40%;
-            padding-left: 6px;
-            padding-right: 10px;
-            padding-top: 7px;
-            box-shadow: $mainBoxShadow;
-                &:hover{
-                color: rgba(8, 120, 31, 0.8);
-                border-color: rgba(8, 120, 31, 0.8);
-            }
-        }
         #list{
             /*Modify only transform and opacity to make the animation smooth af*/
             transition: all 0.4s;
@@ -149,6 +149,11 @@ $todoListContainerWidth: 550px;
                 font-family: 'Open Sans Condensed', sans-serif;
             }
         }
+    }
+    #reminderContainer{
+        font-size: 25px;
+        position:absolute;
+        top: 57px;
     }
     #loadingContainer{
         margin-top: 50px;

@@ -7,25 +7,13 @@ import GoogleSearch from './GoogleSearch.js';
 import Loading from './Loading.js';
 import TodoList from './TodoList.js';
 import QuoteOfTheDay from './QuoteOfTheDay.js';
+import Reminder from './Reminder.js';
 
 export default class App extends React.Component {
     constructor(){
         super();
         this.myRoot = document.querySelector("#root");
         this.imgObj = new Image();
-    }
-    getRandomWallpaperFromUnsplash = () => {
-        const accessKey = "973a2dc62497213188e486e906dc5128f123552910555beecdf9894d63b29bb0";
-        fetch(`https://api.unsplash.com/photos/random?client_id=${accessKey}`, {
-            headers: {
-                "Accept-Version": "v1"
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data.urls.raw);
-                this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${data.urls.raw})`;
-            });
     }
 
     getRandomWallpaperFromCollectionOfUnsplash = () => {
@@ -35,7 +23,6 @@ export default class App extends React.Component {
             raindropsGlass: "1410320",
             landscape: "827743",
             earthPlanets: "894",
-            rainyDay: "1052192",
             summerTropical: "494263",
             maldives: "3106804",
             milkyway: "1538150",
@@ -45,7 +32,6 @@ export default class App extends React.Component {
             space: "1111575",
             unsplashEditorial: '317099',
             desktopWallpapers: '987395',
-            storms: '1089430',
             coolWallpapers: '1111678'
         };
         let randomPage = Math.floor(Math.random() * 20) + 1;
@@ -78,6 +64,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount(){
+        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./boat_mountains_lake_135258_1920x1080.jpg)`;
         this.getRandomWallpaperFromCollectionOfUnsplash();
     }
     render() {
@@ -87,6 +74,7 @@ export default class App extends React.Component {
             <Weather />
             <GoogleSearch />
             <TodoList />
+            <Reminder />
             <Loading />
             <Settings />
             <QuoteOfTheDay />

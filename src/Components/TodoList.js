@@ -36,7 +36,7 @@ export default class TodoList extends React.Component{
     render(){
         return(
             <div id="todoListContainer">
-                <span class="sideButtons" onClick={this.onClickHandler}><GoChecklist /></span>
+                <span className="sideButtons" onClick={this.onClickHandler}><GoChecklist /></span>
                 <div id="list">
                     <h5>Things to do</h5>
                     <input type="text" placeholder="New Task" id="input" onKeyPress={this.onKeyPressHandler}></input>

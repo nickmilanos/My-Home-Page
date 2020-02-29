@@ -8,6 +8,7 @@ import Loading from './Loading.js';
 import TodoList from './TodoList.js';
 import QuoteOfTheDay from './QuoteOfTheDay.js';
 import Reminder from './Reminder.js';
+import News from './News.js';
 
 export default class App extends React.Component {
     constructor(){
@@ -64,7 +65,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount(){
-        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./boat_mountains_lake_135258_1920x1080.jpg)`;
+        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./Images/road.jpg)`;
         this.getRandomWallpaperFromCollectionOfUnsplash();
     }
     render() {
@@ -76,6 +77,7 @@ export default class App extends React.Component {
             <TodoList />
             <Reminder />
             <Loading />
+            <News />
             <Settings />
             <QuoteOfTheDay />
         </div>

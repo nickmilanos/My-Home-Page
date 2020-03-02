@@ -4,37 +4,38 @@ export default class News extends React.Component{
     constructor(){
         super();
         this.state = {
-            randomGreekTitle: "",
-            randomUSTitle: ""
+            title: "",
+            titleLink: "",
+            country: "gr",
+            publisher: ""
         };
+        this.fetchNews = this.fetchNews.bind(this);
     }
-    fetchUSNews(){
-        fetch('https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=4097cea840c347c48e92cf6d1ece3301')
+    fetchNews(){
+        fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.country}&pageSize=100&apiKey=4097cea840c347c48e92cf6d1ece3301`)
             .then(res => res.json())
             .then(data => {
                 let randomTitle = Math.floor(Math.random() * data.articles.length);
+                let splitTitle = data.articles[randomTitle].title.split("-");
                 this.setState({
-                    randomUSTitle: data.articles[randomTitle].title
+                    title: `<<${splitTitle.slice(0, splitTitle.length-1)}>>`,
+                    titleLink: data.articles[randomTitle].url,
+                    publisher: splitTitle[splitTitle.length-1]
                 });
-            });
-    }
-    fetchGreekNews(){
-        fetch('https://newsapi.org/v2/top-headlines?country=gr&pageSize=100&apiKey=4097cea840c347c48e92cf6d1ece3301')
-            .then(res => res.json())
-            .then(data => {
-                let randomTitle = Math.floor(Math.random() * data.articles.length);
-                this.setState({
-                    randomGreekTitle: data.articles[randomTitle].title
-                });
+                let newsContainer = document.getElementById("newsContainer");
+                newsContainer.classList.add("fullWidth");
             });
     }
     componentDidMount(){
-        this.fetchUSNews();
-        setInterval(this.fetchGreekNews(), 5000);
+        this.fetchNews();
+        setInterval(this.fetchNews, 300000);
     } 
     render(){
         return(
-        <div id="newsContainer">{this.state.randomGreekTitle}</div>
+        <div id="newsContainer">
+            <a href={this.state.titleLink} target="_blank">{this.state.title}</a><br />
+            <span>{this.state.publisher}</span>
+        </div>
         );
     }
 

@@ -8,7 +8,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 440px;
-    margin-left: 76.5%;
+    margin-left: 77%;
     font-size: 19px; }
     #appContainer #weatherContainer span {
       margin: 0 9px 0 9px; }
@@ -144,6 +144,23 @@
     bottom: 0;
     width: 100%;
     font-size: 1.14em; }
+  #appContainer #newsContainer {
+    width: 50%;
+    position: absolute;
+    right: 20px;
+    top: 250px;
+    text-align: right;
+    transition: all 0.4s;
+    opacity: 0;
+    transform: translateX(400px); }
+    #appContainer #newsContainer a {
+      font-style: italic;
+      color: rgba(245, 243, 233, 0.8);
+      text-decoration: none; }
+      #appContainer #newsContainer a:hover {
+        text-decoration: underline; }
+    #appContainer #newsContainer span {
+      font-weight: bold; }
   #appContainer .fullWidth {
     opacity: 1 !important;
     transform: translateX(0) !important; }

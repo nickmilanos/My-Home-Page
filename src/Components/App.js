@@ -76,8 +76,8 @@ export default class App extends React.Component {
             <GoogleSearch />
             <TodoList />
             <Reminder />
-            <Loading />
             <News />
+            <Loading />
             <Settings />
             <QuoteOfTheDay />
         </div>

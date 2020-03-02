@@ -18,7 +18,7 @@ $todoListContainerWidth: 550px;
     #weatherContainer{
         @include flexLayout(center);
         width: 440px;
-        margin-left: 76.5%;
+        margin-left: 77%;
         font-size:19px;
         span{
             margin:0 9px 0 9px;
@@ -184,6 +184,27 @@ $todoListContainerWidth: 550px;
         width:100%;
         font-size: 1.14em;
     }
+    #newsContainer{
+        width: 50%;
+        position: absolute;
+        right: 20px;
+        top: 250px;
+        text-align:right;
+        transition: all 0.4s;
+        opacity: 0;
+        transform: translateX(400px);
+            a{
+                font-style: italic;
+                color:rgba(245, 243, 233, 0.8);
+                text-decoration: none;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            span{
+                font-weight: bold; 
+            }
+    }
     .fullWidth{
         opacity: 1 !important;
         transform: translateX(0) !important;
@@ -210,8 +231,3 @@ $todoListContainerWidth: 550px;
         opacity: 1 !important;
     }
 }
-
-
-
-
-

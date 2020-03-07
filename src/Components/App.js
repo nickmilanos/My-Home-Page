@@ -15,15 +15,12 @@ export default class App extends React.Component {
         super();
         this.myRoot = document.querySelector("#root");
         this.imgObj = new Image();
-    }
-
-    getRandomWallpaperFromCollectionOfUnsplash = () => {
-        const favoriteCollections = {
+        this.accessKey = "973a2dc62497213188e486e906dc5128f123552910555beecdf9894d63b29bb0";
+        this.favoriteCollections = {
             animals: "181581",
             intoTheWild: "225",
             raindropsGlass: "1410320",
             landscape: "827743",
-            earthPlanets: "894",
             summerTropical: "494263",
             maldives: "3106804",
             milkyway: "1538150",
@@ -35,25 +32,23 @@ export default class App extends React.Component {
             desktopWallpapers: '987395',
             coolWallpapers: '1111678'
         };
+    }
+
+    getRandomWallpaperFromCollectionOfUnsplash = () => {
         let randomPage = Math.floor(Math.random() * 20) + 1;
-        let favoriteCollectionsValues = Object.values(favoriteCollections);
+        let favoriteCollectionsValues = Object.values(this.favoriteCollections);
         let randomCollectionId = favoriteCollectionsValues[Math.floor(Math.random() * favoriteCollectionsValues.length)];
-        for(let key of Object.keys(favoriteCollections)){
-            if(favoriteCollections[key] === randomCollectionId) console.log(`Collection: ${key}`);
+        for(let key of Object.keys(this.favoriteCollections)){
+            if(this.favoriteCollections[key] === randomCollectionId) console.log(`Collection: ${key}`);
         }
-        const accessKey = "973a2dc62497213188e486e906dc5128f123552910555beecdf9894d63b29bb0";
-        fetch(`https://api.unsplash.com/collections/${randomCollectionId}/photos?client_id=${accessKey}&per_page=30&page=${randomPage}&auto=compress`, {
+                fetch(`https://api.unsplash.com/collections/${randomCollectionId}/photos?client_id=${this.accessKey}&per_page=30&page=${randomPage}&auto=compress`, {
             "Accept-Version": "v1"
         })
             .then(res => res.json())
             .then(data => {
                 let randomImage;
-                if(data.length !== 0){
-                    randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
-                }
-                else{
-                    this.getRandomWallpaperFromCollectionOfUnsplash();
-                }
+                if(data.length !== 0) randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
+                else this.getRandomWallpaperFromCollectionOfUnsplash();
                 this.imgObj.src = randomImage;
                 this.imgObj.addEventListener("load", _ => {
                     document.querySelector("#loadingContainer").style.display = "none";
@@ -64,9 +59,20 @@ export default class App extends React.Component {
             .catch(_ => console.log('Image limit reached..'));
     }
 
+    fetchFromBackEnd(){
+        fetch("/hey", {
+            headers:{
+                "Accept": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(data => console.log(`${data.greeting}${data.name}${data.moreGreetings}`));
+    }
+
     componentDidMount(){
-        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./Images/road.jpg)`;
+        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./Images/SmokeHands.jpg)`;
         this.getRandomWallpaperFromCollectionOfUnsplash();
+        this.fetchFromBackEnd();
     }
     render() {
         return ( 

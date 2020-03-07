@@ -22,13 +22,11 @@ export default class News extends React.Component{
                     titleLink: data.articles[randomTitle].url,
                     publisher: splitTitle[splitTitle.length-1]
                 });
-                let newsContainer = document.getElementById("newsContainer");
-                newsContainer.classList.add("fullWidth");
             });
     }
     componentDidMount(){
         this.fetchNews();
-        setInterval(this.fetchNews, 300000);
+        setInterval(this.fetchNews, 60000);
     } 
     render(){
         return(

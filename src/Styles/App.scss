@@ -47,11 +47,17 @@ $todoListContainerWidth: 550px;
             height:38px;
             width:537px;
             box-shadow: $mainBoxShadow;
-            border-radius: 25px;
+            border-radius: 15px;
             padding-left: 20px;
             transition: 0.3s;
+            opacity: 0.6;
             &:focus{
                 transform:scale(1.06);
+                opacity: 1;
+            }
+            &:hover{
+                transform:scale(1.06);
+                opacity: 1;
             }
         }
     }
@@ -190,9 +196,6 @@ $todoListContainerWidth: 550px;
         right: 20px;
         top: 250px;
         text-align:right;
-        transition: all 0.4s;
-        opacity: 0;
-        transform: translateX(400px);
             a{
                 font-style: italic;
                 color:rgba(245, 243, 233, 0.8);

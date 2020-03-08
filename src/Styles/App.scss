@@ -3,234 +3,246 @@
     flex-wrap:wrap;
     justify-content: $justify_content;
 }
+@mixin hoverOrFocus{
+    transition: 0.3s;
+    opacity: 0.5;
+    &:focus{
+        transform:scale(1.03);
+        opacity: 0.8;
+    }
+    &:hover{
+        transform:scale(1.03);
+        opacity: 0.8;
+    }
+}
 $mainBoxShadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
 $todoInputHeight: 40px;
 $todoListHeight: 850px;
 $todoListHeaderHeight: 31px;
 $todoListContainerWidth: 550px;
 
-
-#appContainer{
-    height:100%;
+body, html {
+    margin: 0;
     width:100%;
-    margin:0;
-    color: rgba(245, 243, 233, 0.8);
-    #weatherContainer{
-        @include flexLayout(center);
-        width: 440px;
-        margin-left: 77%;
-        font-size:19px;
-        span{
-            margin:0 9px 0 9px;
-        }
-    }
-    #hourContainer{
-        font-size: 24px;
-        h1, h2{
-            width:30%;
-            margin-left: 69%;
-            margin-top:0;
-            text-align: right;
-        }
-        h2{
-            margin-bottom:5px;
-        }
-        h1{
-            margin-bottom: 0;
-        }
-    }
-    #googleSearchContainer{
-        text-align:center;
-        #search{
-            outline:none;
-            font-size: 15px;
-            height:38px;
-            width:537px;
-            box-shadow: $mainBoxShadow;
-            border-radius: 15px;
-            padding-left: 20px;
-            transition: 0.3s;
-            opacity: 0.6;
-            &:focus{
-                transform:scale(1.06);
-                opacity: 1;
-            }
-            &:hover{
-                transform:scale(1.06);
-                opacity: 1;
-            }
-        }
-    }
-    .sideButtons{
-        font-size: 21px;
-        border-right: 2px solid rgba(245, 243, 233, 0.8);
-        border-top: 2px solid rgba(245, 243, 233, 0.8);
-        border-bottom: 2px solid rgba(245, 243, 233, 0.8);
-        border-bottom-right-radius: 40%;
-        border-top-right-radius: 40%;
-        padding: 7px 10px 0 6px;
-        box-shadow: $mainBoxShadow;
-            &:hover{
-            color: rgba(8, 120, 31, 0.8);
-            border-color: rgba(8, 120, 31, 0.8);
-        }
-    }
-    #todoListContainer{
-        font-size: 25px;
-        width:$todoListContainerWidth;
-        position:absolute;
-        top: 20px;
-        #list{
-            /*Modify only transform and opacity to make the animation smooth af*/
-            transition: all 0.4s;
-            opacity: 0;
-            height: $todoListHeight;
-            width: $todoListContainerWidth;
-            transform: translateX(-550px);
-            background: #BEB9B5;
-            color: black;
-            border-right: 2px solid black;
-            border-top: 2px solid black;
-            border-bottom: 2px solid black;
-            border-bottom-right-radius: 4%;
-            border-top-right-radius: 4%;
-            box-shadow: $mainBoxShadow;
-            #ulWrapper{
-                overflow-y: auto;
-                height: $todoListHeight - $todoInputHeight - $todoListHeaderHeight - 68px;
-                ul{
-                    align-self: auto;
-                    padding-left: 0;
-                    margin: 0;
-                    list-style-type: none;
-                    li{
-                        padding-left: 5px;
-                        .fas.fa-trash{
-                            transition: opacity 0.4s;
-                            margin-right: 5px;
-                            color: red;
-                            opacity: 0;
-                        }
-                        .dateTime{
-                            float: right;
-                            margin-top: 4px;
-                            margin-right: 20px;
-                            font-size: 19px;
-                            color: rgba(0,0,0,0.4);
-                        }
-                        .fas.fa-check-circle{
-                            float: right;
-                            font-size: 26px;
-                            color: green;
-                            display: none;
-                            margin-right: 20px;
-                            margin-top: 4px;
-                        }
-                    }
-                    li:nth-child(odd){
-                        background: rgb(241, 233, 221);
-                    }
-                }
-            }
-            #ulWrapper::-webkit-scrollbar{
-                display: none;
-            }
-            h5{
-                text-align: center;
-                height: $todoListHeaderHeight;
-                font-size: 31px;
-                transition: all 0.6s;
-                font-family: 'Marck Script', cursive;
-                margin-top: 16px;
-                margin-bottom: 16px;
-            }
-            #input{
-                width: 99.2%;
-                height: $todoInputHeight;
-                font-size: 26px;
-                outline: none;
-                transition: all 0.6s;
-                font-family: 'Open Sans Condensed', sans-serif;
-            }
-        }
-    }
-    #reminderContainer{
-        font-size: 25px;
-        position:absolute;
-        top: 59px;
-        #reminderIcon{
-            padding-top:4px;
-            padding-bottom: 4px;
-        }
-    }
-    #loadingContainer{
-        margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        width:120px;
-        height:120px;
-        font-size: 110px;
-    }
-    #settingsContainer{
-        font-size: 24px;
-        position: absolute;
-        top: 92%;
-        left: 96%;
-        span{
-            margin: 0 40px 0 0;
-            &:hover{
-                color: white;
-            }
-        }
-    }
-    #quoteContainer{
-        text-align: center;
-        position:absolute;
-        bottom:0;
+    height:100%;
+    font-family: 'Open Sans Condensed', sans-serif;
+  
+    #root{
         width:100%;
-        font-size: 1.14em;
-    }
-    #newsContainer{
-        width: 50%;
-        position: absolute;
-        right: 20px;
-        top: 250px;
-        text-align:right;
-            a{
-                font-style: italic;
-                color:rgba(245, 243, 233, 0.8);
-                text-decoration: none;
-                &:hover{
-                    text-decoration: underline;
+        height:100%;
+        background-color: rgb(82, 2, 2);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        #appContainer{
+            color: rgba(245, 243, 233, 0.8);
+            #weatherContainer{
+                @include flexLayout(center);
+                width: 440px;
+                margin-left: 77%;
+                font-size:19px;
+                span{
+                    margin:0 9px 0 9px;
                 }
             }
-            span{
-                font-weight: bold; 
+            #hourContainer{
+                font-size: 24px;
+                h1, h2{
+                    width:30%;
+                    margin-left: 69%;
+                    margin-top:0;
+                    text-align: right;
+                }
+                h2{
+                    margin-bottom:5px;
+                }
+                h1{
+                    margin-bottom: 0;
+                }
             }
-    }
-    .fullWidth{
-        opacity: 1 !important;
-        transform: translateX(0) !important;
-    }
-    .green{
-        color: rgba(12, 141, 12, 1);
-        text-decoration: line-through;
-    }
-    .fadeIn{
-        @keyframes changeOpacity{
-            from{ 
-                opacity: 0;
+            #googleSearchContainer{
+                text-align:center;
+                #search{
+                    @include hoverOrFocus();
+                    outline:none;
+                    font-size: 15px;
+                    height:38px;
+                    width:537px;
+                    box-shadow: $mainBoxShadow;
+                    border-radius: 15px;
+                    padding-left: 20px;
+                }
             }
-            to{ 
-                opacity:1;
+            .sideButtons{
+                @include hoverOrFocus();
+                font-size: 21px;
+                border-right: 2px solid rgba(245, 243, 233, 0.8);
+                border-top: 2px solid rgba(245, 243, 233, 0.8);
+                border-bottom: 2px solid rgba(245, 243, 233, 0.8);
+                border-bottom-right-radius: 40%;
+                border-top-right-radius: 40%;
+                padding: 7px 10px 0 6px;
+                box-shadow: $mainBoxShadow;
+            }
+            #todoListContainer{
+                font-size: 25px;
+                width:$todoListContainerWidth;
+                position:absolute;
+                top: 20px;
+                #list{
+                    /*Modify only transform and opacity to make the animation smooth af*/
+                    transition: all 0.4s;
+                    opacity: 0;
+                    height: $todoListHeight;
+                    width: $todoListContainerWidth;
+                    transform: translateX(-550px);
+                    background: #BEB9B5;
+                    color: black;
+                    border-right: 2px solid black;
+                    border-top: 2px solid black;
+                    border-bottom: 2px solid black;
+                    border-bottom-right-radius: 4%;
+                    border-top-right-radius: 4%;
+                    box-shadow: $mainBoxShadow;
+                    #ulWrapper{
+                        overflow-y: auto;
+                        height: $todoListHeight - $todoInputHeight - $todoListHeaderHeight - 68px;
+                        ul{
+                            align-self: auto;
+                            padding-left: 0;
+                            margin: 0;
+                            list-style-type: none;
+                            li{
+                                padding-left: 5px;
+                                .fas.fa-trash{
+                                    transition: opacity 0.4s;
+                                    margin-right: 5px;
+                                    color: red;
+                                    opacity: 0;
+                                }
+                                .dateTime{
+                                    float: right;
+                                    margin-top: 4px;
+                                    margin-right: 20px;
+                                    font-size: 19px;
+                                    color: rgba(0,0,0,0.4);
+                                }
+                                .fas.fa-check-circle{
+                                    float: right;
+                                    font-size: 26px;
+                                    color: green;
+                                    display: none;
+                                    margin-right: 20px;
+                                    margin-top: 4px;
+                                }
+                            }
+                            li:nth-child(odd){
+                                background: rgb(241, 233, 221);
+                            }
+                        }
+                    }
+                    #ulWrapper::-webkit-scrollbar{
+                        display: none;
+                    }
+                    h5{
+                        text-align: center;
+                        height: $todoListHeaderHeight;
+                        font-size: 31px;
+                        transition: all 0.6s;
+                        font-family: 'Marck Script', cursive;
+                        margin-top: 16px;
+                        margin-bottom: 16px;
+                    }
+                    #input{
+                        width: 99.2%;
+                        height: $todoInputHeight;
+                        font-size: 26px;
+                        outline: none;
+                        transition: all 0.6s;
+                        font-family: 'Open Sans Condensed', sans-serif;
+                    }
+                }
+            }
+            #reminderContainer{
+                font-size: 25px;
+                position:absolute;
+                top: 59px;
+                #reminderIcon{
+                    padding-top:4px;
+                    padding-bottom: 4px;
+                }
+            }
+            #loadingContainer{
+                margin-top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+                width:120px;
+                height:120px;
+                font-size: 110px;
+            }
+            #settingsContainer{
+                font-size: 24px;
+                position: absolute;
+                top: 92%;
+                left: 96%;
+                span{
+                    margin: 0 40px 0 0;
+                    &:hover{
+                        color: white;
+                    }
+                }
+            }
+            #quoteContainer{
+                text-align: center;
+                position:absolute;
+                bottom:0;
+                width:100%;
+                font-size: 1.14em;
+            }
+            #newsContainer{
+                width: 50%;
+                position: absolute;
+                right: 20px;
+                top: 250px;
+                text-align:right;
+                    a{
+                        font-style: italic;
+                        color:rgba(245, 243, 233, 0.8);
+                        text-decoration: none;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                    span{
+                        font-weight: bold; 
+                    }
+            }
+            .fullWidth{
+                opacity: 1 !important;
+                transform: translateX(0) !important;
+            }
+            .green{
+                color: rgba(12, 141, 12, 1);
+                text-decoration: line-through;
+            }
+            .fadeIn{
+                @keyframes changeOpacity{
+                    from{ 
+                        opacity: 0;
+                    }
+                    to{ 
+                        opacity:1;
+                    }
+                }
+                animation: changeOpacity 1s;
+            }
+            .displayInlineBlock{
+                display: inline-block !important;
+            }
+            .fullOpacity{
+                opacity: 1 !important;
             }
         }
-        animation: changeOpacity 1s;
-    }
-    .displayInlineBlock{
-        display: inline-block !important;
-    }
-    .fullOpacity{
-        opacity: 1 !important;
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/App.css';
+
 import Hour from './Hour.js';
 import Weather from './Weather.js';
 import Settings from './Settings.js';
@@ -59,20 +59,9 @@ export default class App extends React.Component {
             .catch(_ => console.log('Image limit reached..'));
     }
 
-    fetchFromBackEnd(){
-        fetch("/hey", {
-            headers:{
-                "Accept": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(data => console.log(`${data.greeting}${data.name}${data.moreGreetings}`));
-    }
-
     componentDidMount(){
         this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./Images/SmokeHands.jpg)`;
         this.getRandomWallpaperFromCollectionOfUnsplash();
-        this.fetchFromBackEnd();
     }
     render() {
         return ( 

@@ -6,12 +6,14 @@ export default class News extends React.Component{
         this.state = {
             title: "",
             titleLink: "",
-            country: "gr",
+            country: "us",
             publisher: ""
         };
         this.fetchNews = this.fetchNews.bind(this);
     }
     fetchNews(){
+        if(Math.random() > 0.5) this.setState({country: "gr"});
+        else this.setState({country: "us"});
         fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.country}&pageSize=100&apiKey=4097cea840c347c48e92cf6d1ece3301`)
             .then(res => res.json())
             .then(data => {

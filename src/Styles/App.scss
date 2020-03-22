@@ -38,8 +38,6 @@ body, html {
         #appContainer{
             color: rgba(245, 243, 233, 0.8);
             #weatherContainer{
-                @include flexLayout(center);
-                width: 440px;
                 margin-left: 77%;
                 font-size:19px;
                 span{
@@ -86,7 +84,7 @@ body, html {
                 box-shadow: $mainBoxShadow;
             }
             #todoListContainer{
-                font-size: 25px;
+                font-size: 20px;
                 width:$todoListContainerWidth;
                 position:absolute;
                 top: 20px;
@@ -118,19 +116,18 @@ body, html {
                                 .fas.fa-trash{
                                     transition: opacity 0.4s;
                                     margin-right: 5px;
-                                    color: red;
                                     opacity: 0;
                                 }
                                 .dateTime{
                                     float: right;
                                     margin-top: 4px;
                                     margin-right: 20px;
-                                    font-size: 19px;
+                                    font-size: 17px;
                                     color: rgba(0,0,0,0.4);
                                 }
                                 .fas.fa-check-circle{
                                     float: right;
-                                    font-size: 26px;
+                                    font-size: 19px;
                                     color: green;
                                     display: none;
                                     margin-right: 20px;
@@ -150,17 +147,15 @@ body, html {
                         height: $todoListHeaderHeight;
                         font-size: 31px;
                         transition: all 0.6s;
-                        font-family: 'Marck Script', cursive;
                         margin-top: 16px;
                         margin-bottom: 16px;
                     }
                     #input{
                         width: 99.2%;
                         height: $todoInputHeight;
-                        font-size: 26px;
+                        font-size: 19px;
                         outline: none;
                         transition: all 0.6s;
-                        font-family: 'Open Sans Condensed', sans-serif;
                     }
                 }
             }
@@ -174,12 +169,12 @@ body, html {
                 }
             }
             #loadingContainer{
-                margin-top: 50px;
+                margin-top: 500px;
                 margin-left: auto;
                 margin-right: auto;
                 width:120px;
                 height:120px;
-                font-size: 110px;
+                font-size: 40px;
             }
             #settingsContainer{
                 font-size: 24px;

@@ -94,7 +94,6 @@ body, html {
                     opacity: 0;
                     height: $todoListHeight;
                     width: $todoListContainerWidth;
-                    transform: translateX(-550px);
                     background: #BEB9B5;
                     color: black;
                     border-right: 2px solid black;
@@ -201,21 +200,24 @@ body, html {
                 right: 20px;
                 top: 250px;
                 text-align:right;
-                    a{
-                        font-style: italic;
-                        color:rgba(245, 243, 233, 0.8);
-                        text-decoration: none;
-                        &:hover{
-                            text-decoration: underline;
-                        }
+                #description{
+                    transition: all 0.5s;
+                    opacity: 0;
+                }
+                #doubleArrows{
+                    transition: all 0.5s;
+                }
+                a{
+                    font-style: italic;
+                    color:rgba(245, 243, 233, 0.8);
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: underline;
                     }
-                    span{
-                        font-weight: bold; 
-                    }
-            }
-            .fullWidth{
-                opacity: 1 !important;
-                transform: translateX(0) !important;
+                }
+                #publisher{
+                    font-weight: bold; 
+                }
             }
             .green{
                 color: rgba(12, 141, 12, 1);
@@ -237,6 +239,12 @@ body, html {
             }
             .fullOpacity{
                 opacity: 1 !important;
+            }
+            .zeroOpacity{
+                opacity: 0 !important;
+            }
+            .rotate180{
+                transform: rotate(180deg);
             }
         }
     }

@@ -13,8 +13,8 @@ export default class QuoteOfTheDay extends React.Component{
         .then(res => res.json())
         .then(data => {
             this.setState({
-                quote: `"${data.contents.quotes[0].quote}"`,
-                author: `-${data.contents.quotes[0].author}`
+                quote: data.contents.quotes[0].quote,
+                author: data.contents.quotes[0].author
             });
         });
     }
@@ -27,8 +27,8 @@ export default class QuoteOfTheDay extends React.Component{
         return(
             <div id="quoteContainer">
                 <blockquote>
-                    <cite>{this.state.quote}</cite>
-                    <footer>{this.state.author}</footer>
+                    <cite>"{this.state.quote}"</cite>
+                    <footer>-{this.state.author}</footer>
                 </blockquote>
 
             </div>

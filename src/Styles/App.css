@@ -74,7 +74,6 @@ body, html {
           opacity: 0;
           height: 850px;
           width: 550px;
-          transform: translateX(-550px);
           background: #BEB9B5;
           color: black;
           border-right: 2px solid black;
@@ -162,17 +161,19 @@ body, html {
         right: 20px;
         top: 250px;
         text-align: right; }
+        body #root #appContainer #newsContainer #description, html #root #appContainer #newsContainer #description {
+          transition: all 0.5s;
+          opacity: 0; }
+        body #root #appContainer #newsContainer #doubleArrows, html #root #appContainer #newsContainer #doubleArrows {
+          transition: all 0.5s; }
         body #root #appContainer #newsContainer a, html #root #appContainer #newsContainer a {
           font-style: italic;
           color: rgba(245, 243, 233, 0.8);
           text-decoration: none; }
           body #root #appContainer #newsContainer a:hover, html #root #appContainer #newsContainer a:hover {
             text-decoration: underline; }
-        body #root #appContainer #newsContainer span, html #root #appContainer #newsContainer span {
+        body #root #appContainer #newsContainer #publisher, html #root #appContainer #newsContainer #publisher {
           font-weight: bold; }
-      body #root #appContainer .fullWidth, html #root #appContainer .fullWidth {
-        opacity: 1 !important;
-        transform: translateX(0) !important; }
       body #root #appContainer .green, html #root #appContainer .green {
         color: #0c8d0c;
         text-decoration: line-through; }
@@ -187,5 +188,9 @@ body, html {
         display: inline-block !important; }
       body #root #appContainer .fullOpacity, html #root #appContainer .fullOpacity {
         opacity: 1 !important; }
+      body #root #appContainer .zeroOpacity, html #root #appContainer .zeroOpacity {
+        opacity: 0 !important; }
+      body #root #appContainer .rotate180, html #root #appContainer .rotate180 {
+        transform: rotate(180deg); }
 
 /*# sourceMappingURL=App.css.map */

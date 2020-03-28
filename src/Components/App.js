@@ -44,25 +44,26 @@ export default class App extends React.Component {
                 fetch(`https://api.unsplash.com/collections/${randomCollectionId}/photos?client_id=${this.accessKey}&per_page=30&page=${randomPage}&auto=compress`, {
             "Accept-Version": "v1"
         })
-            .then(res => res.json())
-            .then(data => {
-                let randomImage;
-                if(data.length !== 0) randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
-                else this.getRandomWallpaperFromCollectionOfUnsplash();
-                this.imgObj.src = randomImage;
-                this.imgObj.addEventListener("load", _ => {
-                    document.querySelector("#loadingContainer").style.display = "none";
-                    this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
-                });
-                console.log(`Page: ${randomPage}`);
-            })
-            .catch(_ => console.log('Image limit reached..'));
+                .then(res => res.json())
+                .then(data => {
+                    let randomImage;
+                    if(data.length !== 0) randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
+                    else this.getRandomWallpaperFromCollectionOfUnsplash();
+                    this.imgObj.src = randomImage;
+                    this.imgObj.addEventListener("load", _ => {
+                        document.querySelector("#loadingContainer").style.display = "none";
+                        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
+                    });
+                    console.log(`Page: ${randomPage}`);
+                })
+                .catch(_ => console.log('Image limit reached..'));
     }
 
     componentDidMount(){
         this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./Images/SmokeHands.jpg)`;
         this.getRandomWallpaperFromCollectionOfUnsplash();
     }
+
     render() {
         return ( 
         <div id = "appContainer" >

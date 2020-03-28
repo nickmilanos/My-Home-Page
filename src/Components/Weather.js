@@ -31,6 +31,7 @@ export default class Weather extends React.Component{
         fetch(`http://api.openweathermap.org/data/2.5/weather?id=256429&units=metric&appid=9b00c332e03384ca3992818f17135f63`)
             .then(res => res.json())
             .then(res => {
+                console.log(res);
                 let readableSunset = new Date(res.sys.sunset * 1000);
                 let readableSunrise = new Date(res.sys.sunrise * 1000);
                 let sunsetHour = readableSunset.getHours() < 10 ? `0${readableSunset.getHours()}` : readableSunset.getHours()

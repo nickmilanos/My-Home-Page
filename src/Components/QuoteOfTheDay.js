@@ -1,37 +1,29 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-export default class QuoteOfTheDay extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            quote: "",
-            author: ""
-        };
-    }
-    getQuoteFromAPI(){
+export default function QuoteOfTheDay() {
+    const [quote, setQuote] = useState("");
+    const [author, setAuthor] = useState("");
+
+    const getQuoteFromAPI = () => {
         return fetch("http://quotes.rest/qod.json")
         .then(res => res.json())
         .then(data => {
-            this.setState({
-                quote: data.contents.quotes[0].quote,
-                author: data.contents.quotes[0].author
-            });
+            setQuote(data.contents.quotes[0].quote);
+            setAuthor(data.contents.quotes[0].author);
         });
     }
 
-    componentDidMount(){
-        this.getQuoteFromAPI();
-    }
+    useEffect(() => {
+        getQuoteFromAPI();
+    }, []);
 
-    render(){
-        return(
-            <div id="quoteContainer">
-                <blockquote>
-                    <cite>"{this.state.quote}"</cite>
-                    <footer>-{this.state.author}</footer>
-                </blockquote>
+    return(
+        <div id="quoteContainer">
+            <blockquote>
+                <cite>"{quote}"</cite>
+                <footer>-{author}</footer>
+            </blockquote>
 
-            </div>
-        );
-    }
+        </div>
+    );
 }

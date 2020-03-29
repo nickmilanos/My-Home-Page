@@ -86,11 +86,12 @@ body, html {
             #todoListContainer{
                 font-size: 20px;
                 width:$todoListContainerWidth;
+                z-index:3;
                 position:absolute;
                 top: 20px;
                 #list{
                     /*Modify only transform and opacity to make the animation smooth af*/
-                    transition: all 0.4s;
+                    transition: all 0.2s;
                     opacity: 0;
                     height: $todoListHeight;
                     width: $todoListContainerWidth;
@@ -111,11 +112,14 @@ body, html {
                             margin: 0;
                             list-style-type: none;
                             li{
+                                cursor: pointer;
                                 padding-left: 5px;
-                                .fas.fa-trash{
+                                .fas.fa-times{
                                     transition: opacity 0.4s;
                                     margin-right: 5px;
                                     opacity: 0;
+                                    font-size: 18px;
+                                    color: rgba(255, 0, 0, 0.623);
                                 }
                                 .dateTime{
                                     float: right;
@@ -135,6 +139,9 @@ body, html {
                             }
                             li:nth-child(odd){
                                 background: rgb(241, 233, 221);
+                            }
+                            li *{
+                                cursor: pointer;
                             }
                         }
                     }

@@ -66,11 +66,12 @@ body, html {
       body #root #appContainer #todoListContainer, html #root #appContainer #todoListContainer {
         font-size: 20px;
         width: 550px;
+        z-index: 3;
         position: absolute;
         top: 20px; }
         body #root #appContainer #todoListContainer #list, html #root #appContainer #todoListContainer #list {
           /*Modify only transform and opacity to make the animation smooth af*/
-          transition: all 0.4s;
+          transition: all 0.2s;
           opacity: 0;
           height: 850px;
           width: 550px;
@@ -91,11 +92,14 @@ body, html {
               margin: 0;
               list-style-type: none; }
               body #root #appContainer #todoListContainer #list #ulWrapper ul li, html #root #appContainer #todoListContainer #list #ulWrapper ul li {
+                cursor: pointer;
                 padding-left: 5px; }
-                body #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-trash, html #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-trash {
+                body #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-times, html #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-times {
                   transition: opacity 0.4s;
                   margin-right: 5px;
-                  opacity: 0; }
+                  opacity: 0;
+                  font-size: 18px;
+                  color: rgba(255, 0, 0, 0.623); }
                 body #root #appContainer #todoListContainer #list #ulWrapper ul li .dateTime, html #root #appContainer #todoListContainer #list #ulWrapper ul li .dateTime {
                   float: right;
                   margin-top: 4px;
@@ -111,6 +115,8 @@ body, html {
                   margin-top: 4px; }
               body #root #appContainer #todoListContainer #list #ulWrapper ul li:nth-child(odd), html #root #appContainer #todoListContainer #list #ulWrapper ul li:nth-child(odd) {
                 background: #f1e9dd; }
+              body #root #appContainer #todoListContainer #list #ulWrapper ul li *, html #root #appContainer #todoListContainer #list #ulWrapper ul li * {
+                cursor: pointer; }
           body #root #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar, html #root #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar {
             display: none; }
           body #root #appContainer #todoListContainer #list h5, html #root #appContainer #todoListContainer #list h5 {

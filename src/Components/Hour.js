@@ -15,19 +15,12 @@ export default class Hour extends React.Component{
         setInterval(() => {
             let date = new Date();
             let updatedSeconds = date.getSeconds();
-            if(updatedSeconds < 10){
-                this.setState({
-                    seconds: `0${updatedSeconds}`
-                });
-            }
-            else{
-                this.setState({
-                    seconds: updatedSeconds
-                });
-            }
+            let displayedSeconds = updatedSeconds < 10 ? `0${updatedSeconds}` : updatedSeconds ;
+            this.setState({
+                seconds: displayedSeconds
+            });
         }, 1000);
     }
-
 
     componentDidMount(){
         this.handleSeconds();

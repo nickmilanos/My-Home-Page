@@ -13,6 +13,7 @@ import News from './News.js';
 export default class App extends React.Component {
     constructor(){
         super();
+        this.loadingSpinner = document.querySelector('#loadingContainer');
         this.myRoot = document.querySelector("#root");
         this.imgObj = new Image();
         this.accessKey = "973a2dc62497213188e486e906dc5128f123552910555beecdf9894d63b29bb0";
@@ -54,9 +55,10 @@ export default class App extends React.Component {
                         document.querySelector("#loadingContainer").style.display = "none";
                         this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
                     });
-                    console.log(`Page: ${randomPage}`);
                 })
-                .catch(_ => console.log('Image limit reached..'));
+                .catch(_ => {
+                    document.querySelector("#loadingContainer").style.display = "none";
+                });
     }
 
     componentDidMount(){

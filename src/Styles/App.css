@@ -92,7 +92,6 @@ body, html {
               margin: 0;
               list-style-type: none; }
               body #root #appContainer #todoListContainer #list #ulWrapper ul li, html #root #appContainer #todoListContainer #list #ulWrapper ul li {
-                cursor: pointer;
                 padding-left: 5px; }
                 body #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-times, html #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-times {
                   transition: opacity 0.4s;
@@ -115,7 +114,7 @@ body, html {
                   margin-top: 4px; }
               body #root #appContainer #todoListContainer #list #ulWrapper ul li:nth-child(odd), html #root #appContainer #todoListContainer #list #ulWrapper ul li:nth-child(odd) {
                 background: #f1e9dd; }
-              body #root #appContainer #todoListContainer #list #ulWrapper ul li *, html #root #appContainer #todoListContainer #list #ulWrapper ul li * {
+              body #root #appContainer #todoListContainer #list #ulWrapper ul li, body #root #appContainer #todoListContainer #list #ulWrapper ul li *, html #root #appContainer #todoListContainer #list #ulWrapper ul li, html #root #appContainer #todoListContainer #list #ulWrapper ul li * {
                 cursor: pointer; }
           body #root #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar, html #root #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar {
             display: none; }

@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {GoChecklist} from 'react-icons/go';
+import ListItem from './ListItem';
 
 export default function TodoList() {
+    let [listItems, setListItems] = useState([]);
     const onClickHandler = () => {
         document.querySelector('#list').classList.toggle("fullOpacity");
         document.querySelector('#reminderContainer').classList.toggle('zeroOpacity');
@@ -53,64 +55,18 @@ export default function TodoList() {
     }
 
     const appendNewTaskToList = (taskValue, taskCompleted, year, month, day, hour, minute) => {
-        let myList = document.querySelector('ul');
-        let myInput = document.querySelector('#input');
+        const myInput = document.querySelector('#input');
         myInput.value = "";
-        let newItem = document.createElement('li');
-        newItem.classList.add('fadeIn');
-        let newTrashCan = document.createElement('span');
-        newTrashCan.innerHTML = `<i class="fas fa-times"></i>`;
-        let contentAndDate = document.createElement('span');
-        contentAndDate.innerHTML = `<span id="taskValue">${taskValue}</span> <span class="dateTime">${day}.${month}.${year} ${hour}:${minute}</span>`;
-        let checkCircle = document.createElement('span');
-        checkCircle.innerHTML = ` <i class="fas fa-check-circle"></i>`;
-        newItem.append(newTrashCan);
-        newItem.append(contentAndDate);
-        newItem.append(checkCircle);
-        myList.append(newItem);
-        if(taskCompleted) {
-            newItem.children[1].children[0].classList.add('green');
-            newItem.children[2].children[0].classList.add('displayInlineBlock');
-        }        
-        newTrashCan.addEventListener('click', (event) => {
-            event.stopPropagation();
-                fetch('/deleteATask', {
-                    headers: {
-                        "Content-Type": "application/json;charset=utf-8"
-                    },
-                    method: 'DELETE',
-                    body: JSON.stringify({taskToDelete: taskValue})
-                })
-                .then(res => res.json())
-                .then(res => {
-                    newTrashCan.parentNode.remove();
-                    console.log(res.responseMessage);
-                })
-                .catch(err => console.log(err));
-        });
-        newItem.addEventListener('click', (event) => {
-            newItem.children[2].children[0].classList.toggle('displayInlineBlock');
-            newItem.children[1].children[0].classList.toggle('green');
-            let isCompleted = newItem.children[1].children[0].classList.contains('green') ? true : false;
-                fetch('/markTaskCompletedUncompleted', {
-                    method: 'PUT',
-                    headers: {
-                        "Content-Type": "application/json;charset=utf-8"
-                    },
-                    body: JSON.stringify({
-                        taskContent: taskValue,
-                        completed: isCompleted
-                    })
-                })
-                .then(res => res.json())
-                .then(data => console.log(data.responseMessage));
-        });
-        newItem.addEventListener('mouseenter', (event) => {
-            event.target.querySelector('.fas.fa-times').classList.toggle('fullOpacity');
-        });
-        newItem.addEventListener('mouseleave', (event) => {
-            event.target.querySelector('.fas.fa-times').classList.toggle('fullOpacity');
-        });
+        setListItems(listItems => [...listItems,<ListItem 
+                            taskValue={taskValue} 
+                            taskCompleted={taskCompleted}
+                            year={year} 
+                            month={month} 
+                            day={day} 
+                            hour={hour} 
+                            minute={minute} 
+                            key={taskValue}
+                      />]);
     }
 
     const getAllTasksFromDB = () => {
@@ -136,15 +92,22 @@ export default function TodoList() {
                 console.log("TODO List is open: " + res);
             });
     }, []);
-
+    const myHeader = <h5>Things to do</h5>;
+    const myRenderedInput = <input 
+                                type="text" 
+                                placeholder="New Task" 
+                                id="input" 
+                                onKeyPress={onKeyPressHandler} 
+                            />;
     return(
         <div id="todoListContainer">
             <span className="sideButtons" onClick={onClickHandler}><GoChecklist /></span>
             <div id="list">
-                <h5>Things to do</h5>
-                <input type="text" placeholder="New Task" id="input" onKeyPress={onKeyPressHandler}></input>
+                {myHeader}
+                {myRenderedInput}                
                 <div id='ulWrapper'>
                     <ul>
+                        {listItems}
                     </ul>
                 </div>
             </div>

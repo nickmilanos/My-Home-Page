@@ -40,7 +40,7 @@ export default class News extends React.Component{
     render(){
         return(
         <div id="newsContainer">
-            <a href={this.state.titleLink} target="_blank">"{this.state.title}"</a><span id="publisher">-{this.state.publisher}</span><br />
+            <a href={this.state.titleLink} target="_blank" rel="noopener noreferrer">"{this.state.title}"</a><span id="publisher">-{this.state.publisher}</span><br />
             <span id="more"><i id="doubleArrows" className="fas fa-angle-double-down"></i></span><br />
             <span id="description">{this.state.description}</span>
         </div>

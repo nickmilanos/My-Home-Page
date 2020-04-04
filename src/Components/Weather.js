@@ -21,12 +21,14 @@ export default class Weather extends React.Component{
     }
 
     componentDidMount(){
-        navigator.geolocation.getCurrentPosition(position => {
-            const coordinates = position.coords;
+        navigator.geolocation.getCurrentPosition(pos => {
+            let coordinates = pos.coords;
             this.setState({
                 lon: coordinates.longitude,
                 lat: coordinates.latitude
             });
+            console.log(this.state.lat);
+            console.log(this.state.lon);
         });
         fetch(`http://api.openweathermap.org/data/2.5/weather?id=256429&units=metric&appid=9b00c332e03384ca3992818f17135f63`)
             .then(res => res.json())

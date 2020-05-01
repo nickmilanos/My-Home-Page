@@ -1,31 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import {GoChecklist} from 'react-icons/go';
-import ListItem from './ListItem';
+import {ListItem} from './ListItem';
 
 export default function TodoList() {
     let [listItems, setListItems] = useState([]);
+    let [isListVisible, setIsListVisible] = useState('');
+    let [inputValue, setInputValue] = useState('');
+
     const onClickHandler = () => {
-        document.querySelector('#list').classList.toggle("fullOpacity");
-        document.querySelector('#reminderContainer').classList.toggle('zeroOpacity');
         document.querySelector('#input').focus();
-        let isTodoListOpened = document.querySelector('#list').classList.contains('fullOpacity') ? true : false;
         fetch('/changeDashboardState', {
             headers: {
                 "Content-Type": "application/json;charset=utf-8"
             },
             method: 'PUT',
             body: JSON.stringify({
-                isTodoListOpen: isTodoListOpened
+                isTodoListOpen: !isListVisible
             })
         })
         .then(res => res.json())
         .then(data => console.log(data.responseMessage))
         .catch(err => console.log(err));
+        setIsListVisible(!isListVisible); 
     }
 
-    const onKeyPressHandler = (event) => {
-        let myInput = document.querySelector('#input');
-        if(event.key === 'Enter' && myInput.value !== ''){
+    const onKeyPressHandler = e => {
+        if(e.key === 'Enter' && inputValue !== ''){
             const date = new Date();
             let currentHour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
             let currentMinute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
@@ -36,7 +36,7 @@ export default function TodoList() {
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 method: 'POST',
-                body: JSON.stringify({newTask: myInput.value,
+                body: JSON.stringify({newTask: inputValue,
                                       taskCompleted: false,
                                       year: date.getFullYear(),
                                       month: date.getMonth()+1,
@@ -47,26 +47,29 @@ export default function TodoList() {
             })
             .then(res => res.json())
             .then(data => {
-                appendNewTaskToList(myInput.value, false, date.getFullYear(), date.getMonth()+1, date.getDate(), currentHour, currentMinute);
+                appendNewTaskToList(inputValue, false, date.getFullYear(), date.getMonth()+1, date.getDate(), currentHour, currentMinute);
                 console.log(data.responseMessage);
             })
             .catch(err => console.log(err));
         }     
     }
 
+    const onChangeHandler = e => {
+        setInputValue(e.target.value);
+    } 
+
     const appendNewTaskToList = (taskValue, taskCompleted, year, month, day, hour, minute) => {
-        const myInput = document.querySelector('#input');
-        myInput.value = "";
+        setInputValue('');
         setListItems(listItems => [...listItems,<ListItem 
-                            taskValue={taskValue} 
-                            taskCompleted={taskCompleted}
-                            year={year} 
-                            month={month} 
-                            day={day} 
-                            hour={hour} 
-                            minute={minute} 
-                            key={taskValue}
-                      />]);
+                                                    taskValue={taskValue} 
+                                                    taskCompleted={taskCompleted}
+                                                    year={year} 
+                                                    month={month} 
+                                                    day={day} 
+                                                    hour={hour} 
+                                                    minute={minute} 
+                                                    key={taskValue}
+                                                />]);
     }
 
     const getAllTasksFromDB = () => {
@@ -84,27 +87,19 @@ export default function TodoList() {
         fetch('/getDashboardState')
             .then(res => res.json())
             .then(res => {
-                if (res !== false){
-                    document.querySelector('#list').classList.toggle("fullOpacity");
-                    document.querySelector('#reminderContainer').classList.toggle('zeroOpacity');
-                    document.querySelector('#input').focus();
-                }
-                console.log("TODO List is open: " + res);
+                setIsListVisible(res)
+                if(res) document.querySelector('#input').focus();
             });
     }, []);
-    const myHeader = <h5>Things to do</h5>;
-    const myRenderedInput = <input 
-                                type="text" 
-                                placeholder="New Task" 
-                                id="input" 
-                                onKeyPress={onKeyPressHandler} 
-                            />;
+
     return(
         <div id="todoListContainer">
-            <span className="sideButtons" onClick={onClickHandler}><GoChecklist /></span>
-            <div id="list">
-                {myHeader}
-                {myRenderedInput}                
+            <span className='sideButtons' onClick={onClickHandler}><GoChecklist /></span>
+            <div id="list" 
+                 className={isListVisible ? "fullOpacity" : ""}
+            >
+                <h5>Things to do</h5>
+                <input type="text" placeholder="New Task" id="input" onKeyPress={onKeyPressHandler} onChange={onChangeHandler} value={inputValue} />
                 <div id='ulWrapper'>
                     <ul>
                         {listItems}

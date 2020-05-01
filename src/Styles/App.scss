@@ -18,8 +18,9 @@
 $mainBoxShadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
 $todoInputHeight: 40px;
 $todoListHeight: 850px;
-$todoListHeaderHeight: 31px;
+$todoListHeaderHeight: 30px;
 $todoListContainerWidth: 550px;
+$mainColor: rgba(245, 243, 233, 0.8);
 
 body, html {
     margin: 0;
@@ -36,12 +37,16 @@ body, html {
         background-position: center;
 
         #appContainer{
-            color: rgba(245, 243, 233, 0.8);
+            color: $mainColor; 
             #weatherContainer{
-                margin-left: 77%;
+                width: 100%;
+                text-align: right;
                 font-size:19px;
                 span{
-                    margin:0 9px 0 9px;
+                    margin:0 10px 0 10px;
+                }
+                span:last-of-type{
+                    margin-right: 20px;
                 }
             }
             #hourContainer{
@@ -75,9 +80,9 @@ body, html {
             .sideButtons{
                 @include hoverOrFocus();
                 font-size: 21px;
-                border-right: 2px solid rgba(245, 243, 233, 0.8);
-                border-top: 2px solid rgba(245, 243, 233, 0.8);
-                border-bottom: 2px solid rgba(245, 243, 233, 0.8);
+                border-right: 2px solid $mainColor;
+                border-top: 2px solid $mainColor;
+                border-bottom: 2px solid $mainColor;
                 border-bottom-right-radius: 40%;
                 border-top-right-radius: 40%;
                 padding: 7px 10px 0 6px;
@@ -103,6 +108,16 @@ body, html {
                     border-bottom-right-radius: 4%;
                     border-top-right-radius: 4%;
                     box-shadow: $mainBoxShadow;
+                    #input{
+                        width: 100%;
+                        height: $todoInputHeight;
+                        text-indent: 20px;
+                        border:none;
+                        font-size: 19px;
+                        outline: none;
+                        transition: all 0.6s;
+                        border-bottom: 1px solid black;
+                    }
                     #ulWrapper{
                         overflow-y: auto;
                         height: $todoListHeight - $todoInputHeight - $todoListHeaderHeight - 68px;
@@ -114,30 +129,30 @@ body, html {
                             li{
                                 padding-left: 5px;
                                 .fas.fa-times{
-                                    transition: opacity 0.4s;
                                     margin-right: 5px;
-                                    opacity: 0;
                                     font-size: 18px;
                                     color: rgba(255, 0, 0, 0.623);
                                 }
                                 .dateTime{
-                                    float: right;
                                     margin-top: 4px;
-                                    margin-right: 20px;
+                                    position: absolute;
+                                    right:40px;
                                     font-size: 17px;
                                     color: rgba(0,0,0,0.4);
                                 }
                                 .fas.fa-check-circle{
-                                    float: right;
                                     font-size: 19px;
                                     color: green;
-                                    display: none;
-                                    margin-right: 20px;
                                     margin-top: 4px;
+                                    margin-right: 10px;
+                                    float: right;
+                                }
+                                #taskValue{
+                                    margin-left: 15px;
                                 }
                             }
                             li:nth-child(odd){
-                                background: rgb(241, 233, 221);
+                                background: $mainColor;
                             }
                             li, li *{
                                 cursor: pointer;
@@ -152,15 +167,8 @@ body, html {
                         height: $todoListHeaderHeight;
                         font-size: 31px;
                         transition: all 0.6s;
-                        margin-top: 16px;
-                        margin-bottom: 16px;
-                    }
-                    #input{
-                        width: 99.2%;
-                        height: $todoInputHeight;
-                        font-size: 19px;
-                        outline: none;
-                        transition: all 0.6s;
+                        margin-top: 11px;
+                        margin-bottom: 11px;
                     }
                 }
             }
@@ -215,7 +223,7 @@ body, html {
                 }
                 a{
                     font-style: italic;
-                    color:rgba(245, 243, 233, 0.8);
+                    color: $mainColor;
                     text-decoration: none;
                     &:hover{
                         text-decoration: underline;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class News extends React.Component{
+export class News extends React.Component{
     constructor(){
         super();
         this.state = {
@@ -8,9 +8,12 @@ export default class News extends React.Component{
             titleLink: "",
             country: "us",
             publisher: "",
-            description: ""
+            description: "",
+            arrowsRotationClass: "",
+            descriptionOpacityClass: ""
         };
         this.fetchNews = this.fetchNews.bind(this);
+        this.clickMoreHandler = this.clickMoreHandler.bind(this);
     }
     fetchNews(){
         if(Math.random() > 0.5) this.setState({country: "gr"});
@@ -29,20 +32,22 @@ export default class News extends React.Component{
             });
     }
     componentDidMount(){
-        let moreButton = document.getElementById('more');
-        moreButton.addEventListener('click', () => {
-            document.getElementById('description').classList.toggle('fullOpacity');
-            document.getElementById('doubleArrows').classList.toggle('rotate180');
-        });
         this.fetchNews();
         setInterval(this.fetchNews, 60000);
     } 
+    clickMoreHandler(){
+        this.setState({
+            arrowsRotationClass: this.state.arrowsRotationClass === "" ? "rotate180" : "",
+            descriptionOpacityClass: this.state.descriptionOpacityClass === "" ? "fullOpacity" : ""
+        });
+    }
     render(){
         return(
         <div id="newsContainer">
             <a href={this.state.titleLink} target="_blank" rel="noopener noreferrer">"{this.state.title}"</a><span id="publisher">-{this.state.publisher}</span><br />
-            <span id="more"><i id="doubleArrows" className="fas fa-angle-double-down"></i></span><br />
-            <span id="description">{this.state.description}</span>
+            <span id="more" onClick={this.clickMoreHandler}>
+            <i id="doubleArrows" className={`fas fa-angle-double-down ${this.state.arrowsRotationClass}`}></i></span><br />
+            <span id="description" className={`${this.state.descriptionOpacityClass}`}>{this.state.description}</span>
         </div>
         );
     }

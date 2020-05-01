@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function TrashCan(props) {
-    const clickOnTrashCan = e=> {
+export function TrashCan(props) {
+    const clickOnTrashCan = e => {
         const targetedTrashCan = e.currentTarget;
         e.stopPropagation();
         fetch('/deleteATask', {

@@ -2,25 +2,26 @@ import React from 'react';
 
 import Hour from './Hour.js';
 import Weather from './Weather.js';
-import Settings from './Settings.js';
+import {Settings} from './Settings.js';
 import GoogleSearch from './GoogleSearch.js';
-import Loading from './Loading.js';
+import {Loading} from './Loading.js';
 import TodoList from './TodoList.js';
 import QuoteOfTheDay from './QuoteOfTheDay.js';
 import Reminder from './Reminder.js';
-import News from './News.js';
+import {News} from './News.js';
 
 export default class App extends React.Component {
     constructor(){
         super();
-        this.loadingSpinner = document.querySelector('#loadingContainer');
+        this.state = {
+            isLoadingVisible: true
+        };
         this.myRoot = document.querySelector("#root");
         this.imgObj = new Image();
         this.accessKey = "973a2dc62497213188e486e906dc5128f123552910555beecdf9894d63b29bb0";
         this.favoriteCollections = {
             animals: "181581",
             intoTheWild: "225",
-            raindropsGlass: "1410320",
             landscape: "827743",
             summerTropical: "494263",
             maldives: "3106804",
@@ -39,30 +40,31 @@ export default class App extends React.Component {
         let randomPage = Math.floor(Math.random() * 20) + 1;
         let favoriteCollectionsValues = Object.values(this.favoriteCollections);
         let randomCollectionId = favoriteCollectionsValues[Math.floor(Math.random() * favoriteCollectionsValues.length)];
-        for(let key of Object.keys(this.favoriteCollections)){
-            if(this.favoriteCollections[key] === randomCollectionId) console.log(`Collection: ${key}`);
-        }
-                fetch(`https://api.unsplash.com/collections/${randomCollectionId}/photos?client_id=${this.accessKey}&per_page=30&page=${randomPage}&auto=compress`, {
+        fetch(`https://api.unsplash.com/collections/${randomCollectionId}/photos?client_id=${this.accessKey}&per_page=30&page=${randomPage}&auto=compress`, {
             "Accept-Version": "v1"
         })
-                .then(res => res.json())
-                .then(data => {
-                    let randomImage;
-                    if(data.length !== 0) randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
-                    else this.getRandomWallpaperFromCollectionOfUnsplash();
-                    this.imgObj.src = randomImage;
-                    this.imgObj.addEventListener("load", _ => {
-                        document.querySelector("#loadingContainer").style.display = "none";
-                        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
+            .then(res => res.json())
+            .then(data => {
+                let randomImage;
+                if(data.length !== 0) randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
+                else this.getRandomWallpaperFromCollectionOfUnsplash();
+                this.imgObj.src = randomImage;
+                this.imgObj.addEventListener("load", _ => {
+                    this.setState({
+                        isLoadingVisible: false
                     });
-                })
-                .catch(_ => {
-                    document.querySelector("#loadingContainer").style.display = "none";
+                    this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${randomImage})`;
                 });
+            })
+            .catch(_ => {
+                this.setState({
+                    isLoadingVisible: false
+                });
+            });
     }
 
     componentDidMount(){
-        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./Images/SmokeHands.jpg)`;
+        this.myRoot.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./Images/dock.jpg)`;
         this.getRandomWallpaperFromCollectionOfUnsplash();
     }
 
@@ -75,7 +77,7 @@ export default class App extends React.Component {
             <TodoList />
             <Reminder />
             <News />
-            <Loading />
+            {this.state.isLoadingVisible ? <Loading /> : null}
             <Settings />
             <QuoteOfTheDay />
         </div>

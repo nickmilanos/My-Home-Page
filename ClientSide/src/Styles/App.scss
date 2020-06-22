@@ -21,6 +21,7 @@ $todoListHeight: 850px;
 $todoListHeaderHeight: 30px;
 $todoListContainerWidth: 550px;
 $mainColor: rgba(245, 243, 233, 0.8);
+$mainBorderRadius: 10px;
 
 body, html {
     margin: 0;
@@ -73,7 +74,7 @@ body, html {
                     height:38px;
                     width:537px;
                     box-shadow: $mainBoxShadow;
-                    border-radius: 15px;
+                    border-radius: $mainBorderRadius;
                     padding-left: 20px;
                 }
             }
@@ -83,8 +84,8 @@ body, html {
                 border-right: 2px solid $mainColor;
                 border-top: 2px solid $mainColor;
                 border-bottom: 2px solid $mainColor;
-                border-bottom-right-radius: 40%;
-                border-top-right-radius: 40%;
+                border-bottom-right-radius: $mainBorderRadius;
+                border-top-right-radius: $mainBorderRadius;
                 padding: 7px 10px 0 6px;
                 box-shadow: $mainBoxShadow;
             }
@@ -105,11 +106,11 @@ body, html {
                     border-right: 2px solid black;
                     border-top: 2px solid black;
                     border-bottom: 2px solid black;
-                    border-bottom-right-radius: 4%;
-                    border-top-right-radius: 4%;
+                    border-bottom-right-radius: $mainBorderRadius;
+                    border-top-right-radius: $mainBorderRadius;
                     box-shadow: $mainBoxShadow;
                     #input{
-                        width: 100%;
+                        width: 99%;
                         height: $todoInputHeight;
                         text-indent: 20px;
                         border:none;

@@ -65,7 +65,7 @@ body #root #appContainer #googleSearchContainer #search, html #root #appContaine
   width: 537px;
   -webkit-box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
           box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
-  border-radius: 15px;
+  border-radius: 10px;
   padding-left: 20px;
 }
 
@@ -89,8 +89,8 @@ body #root #appContainer .sideButtons, html #root #appContainer .sideButtons {
   border-right: 2px solid rgba(245, 243, 233, 0.8);
   border-top: 2px solid rgba(245, 243, 233, 0.8);
   border-bottom: 2px solid rgba(245, 243, 233, 0.8);
-  border-bottom-right-radius: 40%;
-  border-top-right-radius: 40%;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 7px 10px 0 6px;
   -webkit-box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
           box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
@@ -128,14 +128,14 @@ body #root #appContainer #todoListContainer #list, html #root #appContainer #tod
   border-right: 2px solid black;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
-  border-bottom-right-radius: 4%;
-  border-top-right-radius: 4%;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
   -webkit-box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
           box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
 }
 
 body #root #appContainer #todoListContainer #list #input, html #root #appContainer #todoListContainer #list #input {
-  width: 100%;
+  width: 99%;
   height: 40px;
   text-indent: 20px;
   border: none;

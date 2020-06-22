@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/my-home-page_ServerSide/node_modules
+ClientSide/node_modules
+ServerSide/node_modules
 /.pnp
 .pnp.js
 
@@ -10,7 +10,7 @@
 /coverage
 
 # production
-/build
+ClientSide/build
 
 # misc
 .DS_Store
@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 #Resources
-/public/Images
+ClientSide/public/Images

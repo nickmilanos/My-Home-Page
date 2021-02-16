@@ -6,18 +6,18 @@ export function ListItem(props) {
     let [isTrashCanVisible, setIsTrashCanVisible] = useState(false);
     const clickItem = e => {
         setTaskCompleted(!taskCompleted);
-        fetch('/markTaskCompletedUncompleted', {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json;charset=utf-8"
-            },
-            body: JSON.stringify({
-                taskContent: props.taskValue,
-                completed: !taskCompleted
-            })
-        })
-        .then(res => res.json())
-        .then(data => console.log(data.responseMessage));
+        //fetch('/markTaskCompletedUncompleted', {
+        //    method: 'PUT',
+        //    headers: {
+        //        "Content-Type": "application/json;charset=utf-8"
+        //    },
+        //    body: JSON.stringify({
+        //        taskContent: props.taskValue,
+        //        completed: !taskCompleted
+        //    })
+        //})
+        //.then(res => res.json())
+        //.then(data => console.log(data.responseMessage));
     };
     const mouseEnterItem = _ => setIsTrashCanVisible(true);
     const mouseLeaveItem = _ => setIsTrashCanVisible(false);

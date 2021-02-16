@@ -14,7 +14,6 @@ export function TrashCan(props) {
         .then(res => res.json())
         .then(res => {
             targetedTrashCan.parentNode.remove();
-            console.log(res.responseMessage);
         })
         .catch(err => console.log(err));
     };

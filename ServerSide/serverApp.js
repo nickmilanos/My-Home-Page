@@ -1,77 +1,71 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
-const dbName = 'MyHomePage';
+const mysql = require('mysql');
 
 const app = express();
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use(cors());
 
-app.get('/getAllTasks', async (req, res) => {
-    MongoClient.connect(url, async function (err, db) {
-        let resultsRetrieved = await db.db(dbName).collection('Users').findOne({ username: 'nmilanpoker' }, { _id: 0, tasks: {content: 1, 
-                                                                                                                              completed: 1,
-                                                                                                                              year: 1, 
-                                                                                                                              month: 1,
-                                                                                                                              day: 1,
-                                                                                                                              hour: 1,
-                                                                                                                              minute: 1
-                                                                                                                            }});
-        res.send(resultsRetrieved.tasks);
-        db.close();
-    })
+const pool = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "123welcomeNikos22419917!",
+    database: "myHomePage"
 });
-app.post("/saveNewTask", (req, res) => {
-    let newTask = req.body.newTask;
-    MongoClient.connect(url, (err, db) => {
-        db.db(dbName).collection('Users').updateOne({username: 'nmilanpoker'}, {$push: {tasks: {content: newTask, 
-                                                                                                completed: req.body.taskCompleted,
-                                                                                                year: req.body.year,
-                                                                                                month: req.body.month,
-                                                                                                day: req.body.day,
-                                                                                                hour: req.body.hour,
-                                                                                                minute: req.body.minute
-                                                                                            }}});
-        db.close();
-        res.send({responseMessage: "Task successfully saved to database"});
+
+app.get('/dashboardState', (req, res) => {
+    pool.getConnection( (err, connection) => {
+        connection.query("SELECT isTodoListOpen FROM Users", (err, results) => {
+            connection.release();
+            if(err) throw err;
+            res.json(results[0].isTodoListOpen == 0 ? true : false);
+        });
     });
 });
+
+app.put('/setDashboardState', (req, res) => {
+    pool.getConnection((err, connection) => {
+        let isListOpen = req.body.isTodoListOpen ? 1 : 0;
+        connection.query(`UPDATE Users SET isTodoListOpen=${isListOpen} WHERE Users.UserID = 1`, (err, results) => {
+            connection.release();
+            if(err) throw err;
+            res.json(results);
+        });
+    });
+});
+
+app.post('/saveNewTask', (req, res) => {
+    pool.getConnection((err, connection) => {
+        connection.query(`INSERT INTO Tasks(Content, UserID) VALUES ('${req.body.newTask}', 1)`, (err, results) => {
+            connection.release();
+            if(err) throw err;
+            res.json(results);
+        });
+    });
+});
+
+app.get('/tasks', (req, res) => {
+    pool.getConnection((err, connection) => {
+        connection.query('SELECT * FROM Tasks', (err, results) => {
+            connection.release();
+            if(err) throw err;
+            res.json(results);
+        });
+    });
+});
+
 app.delete('/deleteATask', (req, res) => {
-    let taskToDelete = req.body.taskToDelete;
-    MongoClient.connect(url, (err, db) => {
-        db.db(dbName).collection('Users').update({username: 'nmilanpoker'}, {$pull: {tasks: {content: taskToDelete}}});
-        db.close();
-        res.send({responseMessage: "Task was successfully deleted"});
+    pool.getConnection((err, connection) => {
+        connection.query(`DELETE FROM Tasks WHERE Content = '${req.body.taskToDelete}'`, (err, results) => {
+            connection.release();
+            if(err) throw err;
+            res.json(results);
+        });
     });
 });
-app.put('/markTaskCompletedUncompleted', (req, res) => {
-    MongoClient.connect(url, (err, db) => {
-        db.db(dbName).collection('Users').updateOne({username: 'nmilanpoker', "tasks.content": req.body.taskContent}, 
-                                                    {$set: {"tasks.$.completed": req.body.completed}});
-        db.close();
-        res.send({responseMessage: "Task's state has been successfully updated on database"});
-    });    
-});
-app.get('/getDashboardState', async (req, res) => {
-    MongoClient.connect(url, async function(err, db) {
-        let TodoListState = await db.db(dbName).collection('Users').findOne({username: 'nmilanpoker'}, {_id: 0 , isTodoListOpen: 1});
-        db.close();
-        res.send(TodoListState.isTodoListOpen);
-    })
-});
-app.put('/changeDashboardState', (req, res) => {
-    MongoClient.connect(url, (err, db) => {
-        db.db(dbName).collection('Users').updateOne({username: 'nmilanpoker'}, {$set: {isTodoListOpen: req.body.isTodoListOpen}});
-        db.close();
-        res.send({responseMessage: "TODO List state has changed successfully"});
-    })
-});
+
 app.listen(8080,() => {
     console.log('Listening to Port: 8080');
 });

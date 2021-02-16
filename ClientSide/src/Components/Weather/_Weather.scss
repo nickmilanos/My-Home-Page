@@ -1,0 +1,11 @@
+#weatherContainer{
+    width: 100%;
+    text-align: right;
+    font-size:19px;
+    span{
+        margin:0 10px 0 10px;
+    }
+    span:last-of-type{
+        margin-right: 20px;
+    }
+}

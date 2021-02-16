@@ -32,25 +32,6 @@ body #root #appContainer #weatherContainer span:last-of-type, html #root #appCon
   margin-right: 20px;
 }
 
-body #root #appContainer #hourContainer, html #root #appContainer #hourContainer {
-  font-size: 24px;
-}
-
-body #root #appContainer #hourContainer h1, body #root #appContainer #hourContainer h2, html #root #appContainer #hourContainer h1, html #root #appContainer #hourContainer h2 {
-  width: 30%;
-  margin-left: 69%;
-  margin-top: 0;
-  text-align: right;
-}
-
-body #root #appContainer #hourContainer h2, html #root #appContainer #hourContainer h2 {
-  margin-bottom: 5px;
-}
-
-body #root #appContainer #hourContainer h1, html #root #appContainer #hourContainer h1 {
-  margin-bottom: 0;
-}
-
 body #root #appContainer #googleSearchContainer, html #root #appContainer #googleSearchContainer {
   text-align: center;
 }
@@ -223,15 +204,6 @@ body #root #appContainer #reminderContainer #reminderIcon, html #root #appContai
   padding-bottom: 4px;
 }
 
-body #root #appContainer #loadingContainer, html #root #appContainer #loadingContainer {
-  margin-top: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 120px;
-  height: 120px;
-  font-size: 40px;
-}
-
 body #root #appContainer #settingsContainer, html #root #appContainer #settingsContainer {
   font-size: 24px;
   position: absolute;
@@ -245,47 +217,6 @@ body #root #appContainer #settingsContainer span, html #root #appContainer #sett
 
 body #root #appContainer #settingsContainer span:hover, html #root #appContainer #settingsContainer span:hover {
   color: white;
-}
-
-body #root #appContainer #quoteContainer, html #root #appContainer #quoteContainer {
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  font-size: 1.14em;
-}
-
-body #root #appContainer #newsContainer, html #root #appContainer #newsContainer {
-  width: 50%;
-  position: absolute;
-  right: 20px;
-  top: 250px;
-  text-align: right;
-}
-
-body #root #appContainer #newsContainer #description, html #root #appContainer #newsContainer #description {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  opacity: 0;
-}
-
-body #root #appContainer #newsContainer #doubleArrows, html #root #appContainer #newsContainer #doubleArrows {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-body #root #appContainer #newsContainer a, html #root #appContainer #newsContainer a {
-  font-style: italic;
-  color: rgba(245, 243, 233, 0.8);
-  text-decoration: none;
-}
-
-body #root #appContainer #newsContainer a:hover, html #root #appContainer #newsContainer a:hover {
-  text-decoration: underline;
-}
-
-body #root #appContainer #newsContainer #publisher, html #root #appContainer #newsContainer #publisher {
-  font-weight: bold;
 }
 
 body #root #appContainer .green, html #root #appContainer .green {
@@ -331,5 +262,74 @@ body #root #appContainer .zeroOpacity, html #root #appContainer .zeroOpacity {
 body #root #appContainer .rotate180, html #root #appContainer .rotate180 {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.hour {
+  font-size: 24px;
+}
+
+.hour h1, .hour h2 {
+  width: 30%;
+  margin-left: 69%;
+  margin-top: 0;
+  text-align: right;
+}
+
+.hour h2 {
+  margin-bottom: 5px;
+}
+
+.hour h1 {
+  margin-bottom: 0;
+}
+
+.quote {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.news {
+  width: 50%;
+  position: absolute;
+  right: 20px;
+  top: 250px;
+  text-align: right;
+}
+
+.news #description {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.news #doubleArrows {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.news a {
+  font-style: italic;
+  color: rgba(245, 243, 233, 0.8);
+  text-decoration: none;
+}
+
+.news a:hover {
+  text-decoration: underline;
+}
+
+.news #publisher {
+  font-weight: bold;
+}
+
+.loading {
+  margin-top: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+  height: 120px;
+  font-size: 40px;
 }
 /*# sourceMappingURL=App.css.map */

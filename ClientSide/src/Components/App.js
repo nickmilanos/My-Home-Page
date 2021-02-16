@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Hour from './Hour.js';
-import Weather from './Weather.js';
+import Hour from './Hour/Hour.js';
+import Weather from './Weather/Weather.js';
 import {Settings} from './Settings.js';
 import GoogleSearch from './GoogleSearch.js';
-import {Loading} from './Loading.js';
+import {Loading} from './Loading/Loading.js';
 import TodoList from './TodoList.js';
-import QuoteOfTheDay from './QuoteOfTheDay.js';
+import QuoteOfTheDay from './QuoteOfTheDay/QuoteOfTheDay.js';
 import Reminder from './Reminder.js';
-import {News} from './News.js';
+import {News} from './News/News.js';
 
 export default class App extends React.Component {
     constructor(){

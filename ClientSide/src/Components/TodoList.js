@@ -9,7 +9,8 @@ export default function TodoList() {
 
     const onClickHandler = () => {
         document.querySelector('#input').focus();
-        fetch('/changeDashboardState', {
+        console.log(!isListVisible);
+        fetch('http://localhost:8080/setDashboardState', {
             headers: {
                 "Content-Type": "application/json;charset=utf-8"
             },
@@ -19,7 +20,6 @@ export default function TodoList() {
             })
         })
         .then(res => res.json())
-        .then(data => console.log(data.responseMessage))
         .catch(err => console.log(err));
         setIsListVisible(!isListVisible); 
     }
@@ -29,26 +29,17 @@ export default function TodoList() {
             const date = new Date();
             let currentHour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
             let currentMinute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
-
             // Save task to database
-            fetch('/saveNewTask', {
-                headers: {
+            fetch('http://localhost:8080/saveNewTask', {
+               headers: {
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 method: 'POST',
-                body: JSON.stringify({newTask: inputValue,
-                                      taskCompleted: false,
-                                      year: date.getFullYear(),
-                                      month: date.getMonth()+1,
-                                      day: date.getDate(),
-                                      hour: currentHour,
-                                      minute: currentMinute
-                                })
+                body: JSON.stringify({newTask: inputValue, taskCompleted: false})
             })
-            .then(res => res.json())
             .then(data => {
                 appendNewTaskToList(inputValue, false, date.getFullYear(), date.getMonth()+1, date.getDate(), currentHour, currentMinute);
-                console.log(data.responseMessage);
+                console.log(data);
             })
             .catch(err => console.log(err));
         }     
@@ -63,33 +54,29 @@ export default function TodoList() {
         setListItems(listItems => [...listItems,<ListItem 
                                                     taskValue={taskValue} 
                                                     taskCompleted={taskCompleted}
-                                                    year={year} 
-                                                    month={month} 
-                                                    day={day} 
-                                                    hour={hour} 
-                                                    minute={minute} 
                                                     key={taskValue}
                                                 />]);
     }
 
     const getAllTasksFromDB = () => {
-        fetch('/getAllTasks')
+        fetch('http://localhost:8080/tasks')
         .then(res => res.json())
         .then(tasks =>{
             for(let task of tasks){
-                appendNewTaskToList(task.content, task.completed, task.year, task.month, task.day, task.hour, task.minute);
+                appendNewTaskToList(task.Content, task.Completed);
             }
         });
     }
 
     useEffect(() => {
-        getAllTasksFromDB();
-        fetch('/getDashboardState')
+        fetch('http://localhost:8080/dashboardState')
             .then(res => res.json())
             .then(res => {
+                console.log(res);
                 setIsListVisible(res)
                 if(res) document.querySelector('#input').focus();
             });
+        getAllTasksFromDB();
     }, []);
 
     return(

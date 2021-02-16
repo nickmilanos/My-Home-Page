@@ -1,0 +1,25 @@
+.news{
+    width: 50%;
+    position: absolute;
+    right: 20px;
+    top: 250px;
+    text-align:right;
+    #description{
+        transition: all 0.5s;
+        opacity: 0;
+    }
+    #doubleArrows{
+        transition: all 0.5s;
+    }
+    a{
+        font-style: italic;
+        color: $mainColor;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    #publisher{
+        font-weight: bold; 
+    }
+}

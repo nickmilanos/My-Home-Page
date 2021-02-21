@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql');
+const {SQLQueries} = require('./SQLQueries');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,10 +18,10 @@ const pool = mysql.createPool({
 
 app.get('/dashboardState', (req, res) => {
     pool.getConnection( (err, connection) => {
-        connection.query("SELECT isTodoListOpen FROM Users", (err, results) => {
+        connection.query(SQLQueries.getIsTodoListOpen, (err, results) => {
             connection.release();
             if(err) throw err;
-            res.json(results[0].isTodoListOpen == 0 ? true : false);
+            res.json(results[0].isTodoListOpen !== 0);
         });
     });
 });
@@ -28,7 +29,7 @@ app.get('/dashboardState', (req, res) => {
 app.put('/setDashboardState', (req, res) => {
     pool.getConnection((err, connection) => {
         let isListOpen = req.body.isTodoListOpen ? 1 : 0;
-        connection.query(`UPDATE Users SET isTodoListOpen=${isListOpen} WHERE Users.UserID = 1`, (err, results) => {
+        connection.query(SQLQueries.updateIsListOpen, [isListOpen], (err, results) => {
             connection.release();
             if(err) throw err;
             res.json(results);
@@ -38,17 +39,18 @@ app.put('/setDashboardState', (req, res) => {
 
 app.post('/saveNewTask', (req, res) => {
     pool.getConnection((err, connection) => {
-        connection.query(`INSERT INTO Tasks(Content, UserID) VALUES ('${req.body.newTask}', 1)`, (err, results) => {
+        connection.query(SQLQueries.insertNewTask, [req.body.newTask], (err, results) => {
             connection.release();
             if(err) throw err;
-            res.json(results);
+            if(results.affectedRows === 1) res.json({message: "Success"});
+            else res.json({message: "Failure"});
         });
     });
 });
 
 app.get('/tasks', (req, res) => {
     pool.getConnection((err, connection) => {
-        connection.query('SELECT * FROM Tasks', (err, results) => {
+        connection.query(SQLQueries.getAllTasks, (err, results) => {
             connection.release();
             if(err) throw err;
             res.json(results);
@@ -58,10 +60,21 @@ app.get('/tasks', (req, res) => {
 
 app.delete('/deleteATask', (req, res) => {
     pool.getConnection((err, connection) => {
-        connection.query(`DELETE FROM Tasks WHERE Content = '${req.body.taskToDelete}'`, (err, results) => {
+        connection.query(SQLQueries.deleteTask, [req.body.taskToDelete], (err, results) => {
             connection.release();
             if(err) throw err;
             res.json(results);
+        });
+    });
+});
+
+app.put('/toggleTaskCompletion', (req, res) => {
+    pool.getConnection((err, connection) => {
+        connection.query(SQLQueries.updateTaskCompletion, [req.body.completed, req.body.taskContent], (err, results) => {
+            connection.release();
+            if(err) throw err;
+            if(results.affectedRows === 1) res.json({message: "Success"});
+            else res.json({message: "Failure"});
         });
     });
 });

@@ -18,50 +18,6 @@ body #root #appContainer, html #root #appContainer {
   color: rgba(245, 243, 233, 0.8);
 }
 
-body #root #appContainer #weatherContainer, html #root #appContainer #weatherContainer {
-  width: 100%;
-  text-align: right;
-  font-size: 19px;
-}
-
-body #root #appContainer #weatherContainer span, html #root #appContainer #weatherContainer span {
-  margin: 0 10px 0 10px;
-}
-
-body #root #appContainer #weatherContainer span:last-of-type, html #root #appContainer #weatherContainer span:last-of-type {
-  margin-right: 20px;
-}
-
-body #root #appContainer #googleSearchContainer, html #root #appContainer #googleSearchContainer {
-  text-align: center;
-}
-
-body #root #appContainer #googleSearchContainer #search, html #root #appContainer #googleSearchContainer #search {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  opacity: 0.5;
-  outline: none;
-  font-size: 15px;
-  height: 38px;
-  width: 537px;
-  -webkit-box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
-          box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-  padding-left: 20px;
-}
-
-body #root #appContainer #googleSearchContainer #search:focus, html #root #appContainer #googleSearchContainer #search:focus {
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
-  opacity: 0.8;
-}
-
-body #root #appContainer #googleSearchContainer #search:hover, html #root #appContainer #googleSearchContainer #search:hover {
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
-  opacity: 0.8;
-}
-
 body #root #appContainer .sideButtons, html #root #appContainer .sideButtons {
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -87,136 +43,6 @@ body #root #appContainer .sideButtons:hover, html #root #appContainer .sideButto
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
   opacity: 0.8;
-}
-
-body #root #appContainer #todoListContainer, html #root #appContainer #todoListContainer {
-  font-size: 20px;
-  width: 550px;
-  z-index: 3;
-  position: absolute;
-  top: 20px;
-}
-
-body #root #appContainer #todoListContainer #list, html #root #appContainer #todoListContainer #list {
-  /*Modify only transform and opacity to make the animation smooth af*/
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  opacity: 0;
-  height: 850px;
-  width: 550px;
-  background: #BEB9B5;
-  color: black;
-  border-right: 2px solid black;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  -webkit-box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
-          box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
-}
-
-body #root #appContainer #todoListContainer #list #input, html #root #appContainer #todoListContainer #list #input {
-  width: 99%;
-  height: 40px;
-  text-indent: 20px;
-  border: none;
-  font-size: 19px;
-  outline: none;
-  -webkit-transition: all 0.6s;
-  transition: all 0.6s;
-  border-bottom: 1px solid black;
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper, html #root #appContainer #todoListContainer #list #ulWrapper {
-  overflow-y: auto;
-  height: 712px;
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul, html #root #appContainer #todoListContainer #list #ulWrapper ul {
-  -ms-flex-item-align: auto;
-      -ms-grid-row-align: auto;
-      align-self: auto;
-  padding-left: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul li, html #root #appContainer #todoListContainer #list #ulWrapper ul li {
-  padding-left: 5px;
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-times, html #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-times {
-  margin-right: 5px;
-  font-size: 18px;
-  color: rgba(255, 0, 0, 0.623);
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul li .dateTime, html #root #appContainer #todoListContainer #list #ulWrapper ul li .dateTime {
-  margin-top: 4px;
-  position: absolute;
-  right: 40px;
-  font-size: 17px;
-  color: rgba(0, 0, 0, 0.4);
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-check-circle, html #root #appContainer #todoListContainer #list #ulWrapper ul li .fas.fa-check-circle {
-  font-size: 19px;
-  color: green;
-  margin-top: 4px;
-  margin-right: 10px;
-  float: right;
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul li #taskValue, html #root #appContainer #todoListContainer #list #ulWrapper ul li #taskValue {
-  margin-left: 15px;
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul li:nth-child(odd), html #root #appContainer #todoListContainer #list #ulWrapper ul li:nth-child(odd) {
-  background: rgba(245, 243, 233, 0.8);
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper ul li, body #root #appContainer #todoListContainer #list #ulWrapper ul li *, html #root #appContainer #todoListContainer #list #ulWrapper ul li, html #root #appContainer #todoListContainer #list #ulWrapper ul li * {
-  cursor: pointer;
-}
-
-body #root #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar, html #root #appContainer #todoListContainer #list #ulWrapper::-webkit-scrollbar {
-  display: none;
-}
-
-body #root #appContainer #todoListContainer #list h5, html #root #appContainer #todoListContainer #list h5 {
-  text-align: center;
-  height: 30px;
-  font-size: 31px;
-  -webkit-transition: all 0.6s;
-  transition: all 0.6s;
-  margin-top: 11px;
-  margin-bottom: 11px;
-}
-
-body #root #appContainer #reminderContainer, html #root #appContainer #reminderContainer {
-  font-size: 25px;
-  position: absolute;
-  top: 59px;
-}
-
-body #root #appContainer #reminderContainer #reminderIcon, html #root #appContainer #reminderContainer #reminderIcon {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-body #root #appContainer #settingsContainer, html #root #appContainer #settingsContainer {
-  font-size: 24px;
-  position: absolute;
-  top: 92%;
-  left: 96%;
-}
-
-body #root #appContainer #settingsContainer span, html #root #appContainer #settingsContainer span {
-  margin: 0 40px 0 0;
-}
-
-body #root #appContainer #settingsContainer span:hover, html #root #appContainer #settingsContainer span:hover {
-  color: white;
 }
 
 body #root #appContainer .green, html #root #appContainer .green {
@@ -297,6 +123,8 @@ body #root #appContainer .rotate180, html #root #appContainer .rotate180 {
   right: 20px;
   top: 250px;
   text-align: right;
+  font-size: 1.3em;
+  color: white;
 }
 
 .news #description {
@@ -311,8 +139,7 @@ body #root #appContainer .rotate180, html #root #appContainer .rotate180 {
 }
 
 .news a {
-  font-style: italic;
-  color: rgba(245, 243, 233, 0.8);
+  color: white;
   text-decoration: none;
 }
 
@@ -324,12 +151,322 @@ body #root #appContainer .rotate180, html #root #appContainer .rotate180 {
   font-weight: bold;
 }
 
-.loading {
-  margin-top: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 120px;
-  height: 120px;
-  font-size: 40px;
+.weather {
+  width: 100%;
+  text-align: right;
+  font-size: 19px;
+}
+
+.weather span {
+  margin: 0 10px 0 10px;
+}
+
+.weather span:last-of-type {
+  margin-right: 20px;
+}
+
+#settingsContainer {
+  font-size: 24px;
+  position: absolute;
+  top: 92%;
+  left: 96%;
+}
+
+#settingsContainer span {
+  margin: 0 40px 0 0;
+}
+
+#settingsContainer span:hover {
+  color: white;
+}
+
+.todoList {
+  font-size: 20px;
+  width: 550px;
+  z-index: 3;
+  position: absolute;
+  top: 20px;
+}
+
+.todoList #list {
+  /*Modify only transform and opacity to make the animation smooth af*/
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  opacity: 0;
+  height: 850px;
+  width: 550px;
+  background-color: rgba(243, 239, 224, 0.76);
+  color: black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+  -webkit-box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
+          box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
+}
+
+.todoList #list #input {
+  margin: 45px;
+  width: 80%;
+  height: 40px;
+  text-indent: 20px;
+  outline: none;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.todoList #list #ulWrapper {
+  overflow-y: auto;
+  height: 712px;
+}
+
+.todoList #list #ulWrapper ul {
+  -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
+      align-self: auto;
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.todoList #list #ulWrapper ul li {
+  padding-left: 5px;
+}
+
+.todoList #list #ulWrapper ul li .fas.fa-times {
+  margin-right: 5px;
+  font-size: 18px;
+  color: rgba(255, 0, 0, 0.623);
+}
+
+.todoList #list #ulWrapper ul li .dateTime {
+  margin-top: 4px;
+  position: absolute;
+  right: 40px;
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.todoList #list #ulWrapper ul li .fas.fa-check-circle {
+  font-size: 19px;
+  color: green;
+  margin-top: 4px;
+  margin-right: 10px;
+  float: right;
+}
+
+.todoList #list #ulWrapper ul li #taskValue {
+  margin-left: 15px;
+}
+
+.todoList #list #ulWrapper ul li:nth-child(odd) {
+  background: rgba(245, 243, 233, 0.8);
+}
+
+.todoList #list #ulWrapper ul li, .todoList #list #ulWrapper ul li * {
+  cursor: pointer;
+}
+
+.todoList #list #ulWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.todoList #list h5 {
+  text-align: center;
+  height: 30px;
+  font-size: 31px;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  margin-top: 11px;
+  margin-bottom: 11px;
+}
+
+.googleSearch {
+  text-align: center;
+}
+
+.googleSearch #search {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0.5;
+  outline: none;
+  font-size: 15px;
+  height: 38px;
+  width: 537px;
+  -webkit-box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
+          box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding-left: 20px;
+}
+
+.googleSearch #search:focus {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  opacity: 0.8;
+}
+
+.googleSearch #search:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  opacity: 0.8;
+}
+
+.reminder {
+  font-size: 25px;
+  position: absolute;
+  top: 59px;
+}
+
+.reminder #reminderIcon {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.loadingSpinnerWrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.loadingSpinnerWrapper .sk-chase {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  -webkit-animation: sk-chase 2.5s infinite linear both;
+          animation: sk-chase 2.5s infinite linear both;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-animation: sk-chase-dot 2.0s infinite ease-in-out both;
+          animation: sk-chase-dot 2.0s infinite ease-in-out both;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(1) {
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(1):before {
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(2) {
+  -webkit-animation-delay: -1.0s;
+          animation-delay: -1.0s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(2):before {
+  -webkit-animation-delay: -1.0s;
+          animation-delay: -1.0s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(3) {
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(3):before {
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(4) {
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(4):before {
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(5) {
+  -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(5):before {
+  -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(6) {
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+.loadingSpinnerWrapper .sk-chase .sk-chase-dot:nth-child(6):before {
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+.sk-chase-dot:before {
+  content: '';
+  display: block;
+  width: 25%;
+  height: 25%;
+  background-color: white;
+  border-radius: 100%;
+  -webkit-animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
+          animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
+}
+
+@-webkit-keyframes sk-chase {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes sk-chase-dot {
+  80%, 100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot {
+  80%, 100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes sk-chase-dot-before {
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  100%, 0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes sk-chase-dot-before {
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  100%, 0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 /*# sourceMappingURL=App.css.map */

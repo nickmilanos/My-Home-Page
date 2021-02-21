@@ -1,42 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {months, weekdays} from '../../Constants';
 
-export default class Hour extends React.Component{
-    constructor(){
-        super();
-        this.state={
-            seconds: "",
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        };
-        this.handleSeconds = this.handleSeconds.bind(this);
-    }
+export const Hour = () => {
+    let [currentHour, setCurrentHour] = useState("");
+    let [currentMinute, setCurrentMinute] = useState("");
+    let [formatedDate, setFormatedDate] = useState("");
 
-    handleSeconds(){
-        setInterval(() => {
-            let date = new Date();
-            let updatedSeconds = date.getSeconds();
-            let displayedSeconds = updatedSeconds < 10 ? `0${updatedSeconds}` : updatedSeconds ;
-            this.setState({
-                seconds: displayedSeconds
-            });
-        }, 1000);
-    }
+    const updateDate = () => {
+        let date = new Date();
+        setCurrentHour(date.getHours() < 10 ? `0${date.getHours()}` : date.getHours());
+        setCurrentMinute(date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes());
+        setFormatedDate(`${weekdays[date.getDay()]}, ${new Date().getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`);
+    };
 
-    componentDidMount(){
-        this.handleSeconds();
-    }
+    useEffect(() => {
+        updateDate();
+        let oneMinute = setInterval(() => {updateDate()}, 1000);
+        return () => clearInterval(oneMinute);
+    }, []);
 
-    render(){
-        const date = new Date();
-        let currentMonth = this.state.months[date.getMonth()];
-        let currentDay = this.state.days[date.getDay()];
-        let currentHour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours()
-        let currentMinute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
-        return(
-            <div className="hour">
-                <h1>{currentHour}:{currentMinute}:{this.state.seconds}</h1>
-                <h2>{currentDay}, {date.getDate()} {currentMonth} {date.getFullYear()}</h2>
-            </div>
-        );
-    }
+    return(
+        <div className="hour">
+            <h1>{currentHour}:{currentMinute}</h1>
+            <h2>{formatedDate}</h2>
+        </div>
+    );
 }

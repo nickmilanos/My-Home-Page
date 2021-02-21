@@ -1,0 +1,13 @@
+.googleSearch{
+    text-align:center;
+    #search{
+        @include hoverOrFocus();
+        outline:none;
+        font-size: 15px;
+        height:38px;
+        width:537px;
+        box-shadow: $mainBoxShadow;
+        border-radius: $mainBorderRadius;
+        padding-left: 20px;
+    }
+}

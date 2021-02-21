@@ -29,7 +29,6 @@ body, html {
     width:100%;
     height:100%;
     font-family: 'Open Sans Condensed', sans-serif;
-  
     #root{
         width:100%;
         height:100%;
@@ -37,33 +36,8 @@ body, html {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-
         #appContainer{
             color: $mainColor; 
-            #weatherContainer{
-                width: 100%;
-                text-align: right;
-                font-size:19px;
-                span{
-                    margin:0 10px 0 10px;
-                }
-                span:last-of-type{
-                    margin-right: 20px;
-                }
-            }
-            #googleSearchContainer{
-                text-align:center;
-                #search{
-                    @include hoverOrFocus();
-                    outline:none;
-                    font-size: 15px;
-                    height:38px;
-                    width:537px;
-                    box-shadow: $mainBoxShadow;
-                    border-radius: $mainBorderRadius;
-                    padding-left: 20px;
-                }
-            }
             .sideButtons{
                 @include hoverOrFocus();
                 font-size: 21px;
@@ -75,139 +49,21 @@ body, html {
                 padding: 7px 10px 0 6px;
                 box-shadow: $mainBoxShadow;
             }
-            #todoListContainer{
-                font-size: 20px;
-                width:$todoListContainerWidth;
-                z-index:3;
-                position:absolute;
-                top: 20px;
-                #list{
-                    /*Modify only transform and opacity to make the animation smooth af*/
-                    transition: all 0.2s;
-                    opacity: 0;
-                    height: $todoListHeight;
-                    width: $todoListContainerWidth;
-                    background: #BEB9B5;
-                    color: black;
-                    border-right: 2px solid black;
-                    border-top: 2px solid black;
-                    border-bottom: 2px solid black;
-                    border-bottom-right-radius: $mainBorderRadius;
-                    border-top-right-radius: $mainBorderRadius;
-                    box-shadow: $mainBoxShadow;
-                    #input{
-                        width: 99%;
-                        height: $todoInputHeight;
-                        text-indent: 20px;
-                        border:none;
-                        font-size: 19px;
-                        outline: none;
-                        transition: all 0.6s;
-                        border-bottom: 1px solid black;
-                    }
-                    #ulWrapper{
-                        overflow-y: auto;
-                        height: $todoListHeight - $todoInputHeight - $todoListHeaderHeight - 68px;
-                        ul{
-                            align-self: auto;
-                            padding-left: 0;
-                            margin: 0;
-                            list-style-type: none;
-                            li{
-                                padding-left: 5px;
-                                .fas.fa-times{
-                                    margin-right: 5px;
-                                    font-size: 18px;
-                                    color: rgba(255, 0, 0, 0.623);
-                                }
-                                .dateTime{
-                                    margin-top: 4px;
-                                    position: absolute;
-                                    right:40px;
-                                    font-size: 17px;
-                                    color: rgba(0,0,0,0.4);
-                                }
-                                .fas.fa-check-circle{
-                                    font-size: 19px;
-                                    color: green;
-                                    margin-top: 4px;
-                                    margin-right: 10px;
-                                    float: right;
-                                }
-                                #taskValue{
-                                    margin-left: 15px;
-                                }
-                            }
-                            li:nth-child(odd){
-                                background: $mainColor;
-                            }
-                            li, li *{
-                                cursor: pointer;
-                            }
-                        }
-                    }
-                    #ulWrapper::-webkit-scrollbar{
-                        display: none;
-                    }
-                    h5{
-                        text-align: center;
-                        height: $todoListHeaderHeight;
-                        font-size: 31px;
-                        transition: all 0.6s;
-                        margin-top: 11px;
-                        margin-bottom: 11px;
-                    }
-                }
-            }
-            #reminderContainer{
-                font-size: 25px;
-                position:absolute;
-                top: 59px;
-                #reminderIcon{
-                    padding-top:4px;
-                    padding-bottom: 4px;
-                }
-            }
-         
-            #settingsContainer{
-                font-size: 24px;
-                position: absolute;
-                top: 92%;
-                left: 96%;
-                span{
-                    margin: 0 40px 0 0;
-                    &:hover{
-                        color: white;
-                    }
-                }
-            }
             .green{
                 color: rgba(12, 141, 12, 1);
                 text-decoration: line-through;
             }
             .fadeIn{
                 @keyframes changeOpacity{
-                    from{ 
-                        opacity: 0;
-                    }
-                    to{ 
-                        opacity:1;
-                    }
+                    from{ opacity: 0; }
+                    to{  opacity:1; }
                 }
                 animation: changeOpacity 1s;
             }
-            .displayInlineBlock{
-                display: inline-block !important;
-            }
-            .fullOpacity{
-                opacity: 1 !important;
-            }
-            .zeroOpacity{
-                opacity: 0 !important;
-            }
-            .rotate180{
-                transform: rotate(180deg);
-            }
+            .displayInlineBlock{ display: inline-block !important; }
+            .fullOpacity{ opacity: 1 !important; }
+            .zeroOpacity{ opacity: 0 !important; }
+            .rotate180{ transform: rotate(180deg); }
         }
     }
 }
@@ -215,4 +71,9 @@ body, html {
 @import '../Components/Hour/Hour';
 @import '../Components/QuoteOfTheDay/QuoteOfTheDay';
 @import '../Components/News/News';
-@import '../Components/Loading/Loading';
+@import '../Components/Weather/Weather';
+@import '../Components/Settings/Settings';
+@import '../Components/TodoList/TodoList';
+@import '../Components/GoogleSearch/GoogleSearch';
+@import '../Components/Reminder/Reminder';
+@import '../Components/LoadingSpinner/LoadingSpinner';

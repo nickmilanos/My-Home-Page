@@ -1,14 +1,13 @@
 import React from 'react';
-
-import Hour from './Hour/Hour.js';
+import {Hour} from './Hour/Hour.js';
 import Weather from './Weather/Weather.js';
-import {Settings} from './Settings.js';
-import GoogleSearch from './GoogleSearch.js';
-import {Loading} from './Loading/Loading.js';
-import TodoList from './TodoList.js';
+import {Settings} from './Settings/Settings.js';
+import GoogleSearch from './GoogleSearch/GoogleSearch.js';
+import TodoList from './TodoList/TodoList.js';
 import QuoteOfTheDay from './QuoteOfTheDay/QuoteOfTheDay.js';
-import Reminder from './Reminder.js';
+import Reminder from './Reminder/Reminder.js';
 import {News} from './News/News.js';
+import {LoadingSpinner} from './LoadingSpinner/LoadingSpinner.js';
 
 export default class App extends React.Component {
     constructor(){
@@ -49,7 +48,7 @@ export default class App extends React.Component {
                 if(data.length !== 0) randomImage = data[Math.floor(Math.random() * data.length)].urls.raw;
                 else this.getRandomWallpaperFromCollectionOfUnsplash();
                 this.imgObj.src = randomImage;
-                this.imgObj.addEventListener("load", _ => {
+                this.imgObj.addEventListener("load", () => {
                     this.setState({
                         isLoadingVisible: false
                     });
@@ -77,7 +76,7 @@ export default class App extends React.Component {
             <TodoList />
             <Reminder />
             <News />
-            {this.state.isLoadingVisible ? <Loading /> : null}
+            {this.state.isLoadingVisible && <LoadingSpinner />}
             <Settings />
             <QuoteOfTheDay />
         </div>

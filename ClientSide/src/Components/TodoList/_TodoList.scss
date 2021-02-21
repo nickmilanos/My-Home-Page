@@ -1,0 +1,82 @@
+.todoList{
+    font-size: 20px;
+    width:$todoListContainerWidth;
+    z-index:3;
+    position:absolute;
+    top: 20px;
+    #list{
+        /*Modify only transform and opacity to make the animation smooth af*/
+        transition: all 0.2s;
+        opacity: 0;
+        height: $todoListHeight;
+        width: $todoListContainerWidth;
+        background-color:rgba(243,239,224,0.76);
+        color: black;
+        border-right: 2px solid black;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+        box-shadow: $mainBoxShadow;
+        #input{
+            margin: 45px;
+            width: 80%;
+            height: $todoInputHeight;
+            text-indent: 20px;
+            outline: none;
+            transition: all 0.6s;
+        }
+        #ulWrapper{
+            overflow-y: auto;
+            height: $todoListHeight - $todoInputHeight - $todoListHeaderHeight - 68px;
+            ul{
+                align-self: auto;
+                padding-left: 0;
+                margin: 0;
+                list-style-type: none;
+                li{
+                    padding-left: 5px;
+                    .fas.fa-times{
+                        margin-right: 5px;
+                        font-size: 18px;
+                        color: rgba(255, 0, 0, 0.623);
+                    }
+                    .dateTime{
+                        margin-top: 4px;
+                        position: absolute;
+                        right:40px;
+                        font-size: 17px;
+                        color: rgba(0,0,0,0.4);
+                    }
+                    .fas.fa-check-circle{
+                        font-size: 19px;
+                        color: green;
+                        margin-top: 4px;
+                        margin-right: 10px;
+                        float: right;
+                    }
+                    #taskValue{
+                        margin-left: 15px;
+                    }
+                }
+                li:nth-child(odd){
+                    background: $mainColor;
+                }
+                li, li *{
+                    cursor: pointer;
+                }
+            }
+        }
+        #ulWrapper::-webkit-scrollbar{
+            display: none;
+        }
+        h5{
+            text-align: center;
+            height: $todoListHeaderHeight;
+            font-size: 31px;
+            transition: all 0.6s;
+            margin-top: 11px;
+            margin-bottom: 11px;
+        }
+    }
+}
